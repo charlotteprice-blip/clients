@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editing Your Website — Executive Frame™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#121C25; --teal:#5B8F7B; --offwhite:#F5F4F1; --muted:#8B95A1;
+    --ink:#0E1A24; --card:#FFFFFF; --accent:#C0714A; --green:#4caf82;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--offwhite);color:var(--navy);font-family:'Montserrat',sans-serif;line-height:1.65}
+  .serif{font-family:'Cormorant Garamond',serif}
+  header{background:var(--navy);color:var(--offwhite);padding:56px 24px 48px;text-align:center}
+  header .brand{font-family:'Cormorant Garamond',serif;font-size:34px;letter-spacing:.5px}
+  header .brand sup{font-size:14px}
+  header .tag{color:var(--muted);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:18px;margin-top:4px}
+  header h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;margin-top:28px}
+  header h1 em{color:var(--teal);font-style:italic}
+  header p.sub{max-width:620px;margin:14px auto 0;color:#c9cfd6;font-size:15px}
+  nav.steps{position:sticky;top:0;background:var(--navy);z-index:10;display:flex;justify-content:center;flex-wrap:wrap;gap:0;border-top:1px solid rgba(255,255,255,.08);box-shadow:0 2px 12px rgba(0,0,0,.25)}
+  nav.steps button{background:none;border:none;color:var(--muted);font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:16px 18px;cursor:pointer;border-bottom:3px solid transparent;transition:.2s}
+  nav.steps button:hover{color:var(--offwhite)}
+  nav.steps button.active{color:var(--offwhite);border-bottom-color:var(--teal)}
+  main{max-width:860px;margin:0 auto;padding:48px 24px 80px}
+  section.step{display:none;animation:fade .35s ease}
+  section.step.visible{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .eyebrow{display:flex;align-items:center;gap:12px;color:var(--teal);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+  .eyebrow::before{content:"";width:44px;height:1px;background:var(--teal)}
+  h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:36px;margin-bottom:18px}
+  h2 em{color:var(--accent)}
+  p{margin-bottom:14px;font-size:15px}
+  .card{background:var(--card);border:1px solid #E4E2DC;border-radius:10px;padding:28px;margin:22px 0;box-shadow:0 1px 4px rgba(18,28,37,.05)}
+  .mock{border:1px solid #D8D5CE;border-radius:10px;overflow:hidden;margin:22px 0;box-shadow:0 4px 18px rgba(18,28,37,.10)}
+  .mock .chrome{background:#F1F1F3;display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #E0E0E4}
+  .mock .chrome .dot{width:10px;height:10px;border-radius:50%;background:#D3D3D8}
+  .mock .chrome .url{background:#fff;border:1px solid #E0E0E4;border-radius:6px;font-size:12px;color:#6a7482;padding:4px 12px;flex:1;text-align:center}
+  .mock .bar{background:#fff;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid #ECEAE5}
+  .mock .bar .file{font-size:13px;font-weight:600}
+  .mock .bar .file span{display:block;font-weight:400;color:var(--muted);font-size:11px}
+  .savebtn{background:#2f6fed;color:#fff;font-size:13px;font-weight:600;border-radius:8px;padding:8px 22px;display:inline-block}
+  .savebtn.idle{background:#EDEDEF;color:#9aa1ab}
+  .mock .page{background:var(--navy);padding:40px 36px}
+  .mock .page .peyebrow{color:var(--muted);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
+  .mock .page .ph1{font-family:'Cormorant Garamond',serif;color:var(--offwhite);font-size:40px;line-height:1.15}
+  .mock .page .ph1 em{color:#e0a58c;font-style:italic}
+  .mock .page .plead{color:#b8bfc7;font-size:13px;margin-top:16px;max-width:420px}
+  .region{outline:1.5px solid rgba(212,180,131,.85);outline-offset:4px;border-radius:1px}
+  .region-label{display:inline-block;background:rgba(212,180,131,.92);color:#231a0e;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-bottom:8px}
+  .toolbar{display:inline-flex;align-items:center;gap:14px;background:#fff;border-radius:8px;box-shadow:0 6px 22px rgba(0,0,0,.35);padding:10px 16px;font-size:13px;color:#333;margin:0 0 12px}
+  .toolbar b{font-weight:700}.toolbar i{font-family:'Cormorant Garamond',serif}
+  .toolbar .sep{width:1px;height:16px;background:#E2E2E6}
+  ul.clean{list-style:none;margin:10px 0 16px}
+  ul.clean li{padding:9px 0 9px 34px;position:relative;font-size:15px;border-bottom:1px solid #EFEDE8}
+  ul.clean li:last-child{border-bottom:none}
+  ul.clean.yes li::before{content:"✓";position:absolute;left:6px;color:var(--green);font-weight:700}
+  ul.clean.no li::before{content:"✕";position:absolute;left:6px;color:var(--accent);font-weight:700}
+  .pill{display:inline-block;background:var(--teal);color:#fff;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+  .pill.warn{background:var(--accent)}
+  .note{border-left:3px solid var(--teal);background:#EDF2EF;padding:16px 20px;border-radius:0 8px 8px 0;margin:20px 0;font-size:14px}
+  .note.warn{border-left-color:var(--accent);background:#F6EDE7}
+  .try{background:var(--navy);border-radius:10px;padding:36px;margin:24px 0}
+  .try .hint{color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+  .try .demoheading{font-family:'Cormorant Garamond',serif;font-size:38px;color:var(--offwhite);line-height:1.2}
+  .try [contenteditable]{outline:1.5px dashed rgba(212,180,131,.85);outline-offset:5px;border-radius:1px;cursor:text;transition:.15s}
+  .try [contenteditable]:hover{outline-style:solid;background:rgba(212,180,131,.08)}
+  .try [contenteditable]:focus{outline:2px solid #d4b483;background:rgba(212,180,131,.12)}
+  .try .demoheading em{color:#e0a58c;font-style:italic}
+  .try .caption{color:#93A0AB;font-size:13px;margin-top:20px}
+  .actionbox{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;background:#fff;border:1px solid #E4E2DC;border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px}
+  .actionbox .lbl{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-right:4px}
+  .actionbox a{font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--teal);color:var(--navy)}
+  .actionbox a:hover{color:var(--teal)}
+  .actionbox .sep2{color:#C9CFD6}
+  .stepnav{display:flex;justify-content:space-between;margin-top:38px;gap:12px}
+  .stepnav button{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:.5px;padding:13px 26px;border-radius:6px;cursor:pointer;border:1.5px solid var(--navy);background:none;color:var(--navy);transition:.2s}
+  .stepnav button.primary{background:var(--navy);color:var(--offwhite)}
+  .stepnav button:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+  .stepnav button:disabled{opacity:.25;cursor:default}
+  .stepnav button:disabled:hover{background:none;color:var(--navy);border-color:var(--navy)}
+  table.ref{width:100%;border-collapse:collapse;font-size:14px;margin:16px 0}
+  table.ref th{background:var(--navy);color:var(--offwhite);text-align:left;padding:12px 16px;font-weight:600;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+  table.ref td{padding:12px 16px;border-bottom:1px solid #E8E6E0;vertical-align:top;background:#fff}
+  .flow{display:flex;flex-wrap:wrap;gap:0;align-items:stretch;margin:22px 0}
+  .flow .fstep{flex:1;min-width:140px;background:#fff;border:1px solid #E4E2DC;padding:18px 16px;position:relative;text-align:center}
+  .flow .fstep:first-child{border-radius:10px 0 0 10px}
+  .flow .fstep:last-child{border-radius:0 10px 10px 0}
+  .flow .fstep .num{width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+  .flow .fstep h4{font-size:13px;font-weight:700;margin-bottom:6px}
+  .flow .fstep p{font-size:12px;color:#5c6672;margin:0}
+  footer{background:var(--navy);color:var(--muted);text-align:center;padding:30px 24px;font-size:12.5px}
+  footer .serif{color:var(--offwhite);font-size:16px}
+  a{color:var(--teal)}
+  @media(max-width:640px){header h1{font-size:32px}h2{font-size:28px}.flow .fstep{min-width:100%;border-radius:0}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Executive Frame<sup>™</sup></div>
+  <div class="tag">Human first. Then performance.</div>
+  <h1>Editing your website, <em>made simple.</em></h1>
+  <p class="sub">A short guide to your new editing system. You can now change the words on your website yourself, directly in the browser, with no files, no uploads, and nothing you can break.</p>
+</header>
+
+<nav class="steps" id="stepnav">
+  <button data-step="0" class="active">1 · How it works</button>
+  <button data-step="1">2 · Open a page</button>
+  <button data-step="2">3 · Edit text</button>
+  <button data-step="3">4 · Save &amp; publish</button>
+  <button data-step="4">5 · What you can edit</button>
+  <button data-step="5">6 · Visual changes</button>
+  <button data-step="6">7 · New pages</button>
+  <button data-step="7">8 · Quick reference</button>
+</nav>
+
+<main>
+
+<!-- STEP 1 -->
+<section class="step visible">
+  <div class="eyebrow">Step One · The Big Picture</div>
+  <h2>How your new system <em>works.</em></h2>
+  <p>Your website now has a professional editing surface called <strong>CloudCannon</strong>. You open your website inside it, click on a piece of text, type your change, and press Save. A few minutes later the change is live on executiveframe.co.nz. That is the whole process.</p>
+  <div class="flow">
+    <div class="fstep"><div class="num">1</div><h4>Open</h4><p>Log in and open the page you want to change</p></div>
+    <div class="fstep"><div class="num">2</div><h4>Click</h4><p>Click the text you want to edit</p></div>
+    <div class="fstep"><div class="num">3</div><h4>Type</h4><p>Make your change, exactly like a document</p></div>
+    <div class="fstep"><div class="num">4</div><h4>Save</h4><p>Press Save and the site republishes itself</p></div>
+  </div>
+  <div class="note">The system is deliberately protective. Only the written content is open to you; the design, layout, colours, diagrams and structure are locked, so nothing you do while editing can break how the site looks or works.</div>
+  <div class="actionbox"><span class="lbl">Click here to</span> <a href="https://executiveframe.co.nz" target="_blank">see your live site</a> <span class="sep2">·</span> <a href="https://executiveframe.co.nz/update" target="_blank">open your editing login</a></div>
+  <div class="stepnav"><button disabled>← Back</button><button class="primary" onclick="go(1)">Next: Open a page →</button></div>
+</section>
+
+<!-- STEP 2 -->
+<section class="step">
+  <div class="eyebrow">Step Two · Getting In</div>
+  <h2>Opening a page to <em>edit.</em></h2>
+  <p>Go to <a href="https://executiveframe.co.nz/update" target="_blank">executiveframe.co.nz/update</a> — your own login page for the site — and enter your editing password (below). You'll arrive at a simple dashboard; click <strong>Pages</strong>, and every page of your website appears as a card with a small preview picture.</p>
+  <div class="mock">
+    <div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">executiveframe.co.nz/update</span></div>
+    <div style="background:#FBFAF8;padding:26px 30px">
+      <div style="font-weight:700;font-size:20px;margin-bottom:14px">Pages</div>
+      <div style="background:#fff;border:1.5px solid #C9CFD6;border-radius:8px;padding:8px 14px;color:#9aa1ab;font-size:13px;max-width:340px;margin-bottom:18px">🔍&nbsp; Type a page name to find it, e.g. “family”</div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <div style="width:170px;border:1px solid #E4E2DC;border-radius:8px;overflow:hidden;background:#fff"><div style="height:74px;background:var(--navy);display:flex;align-items:center;justify-content:center"><span class="serif" style="color:#F5F4F1;font-size:15px">EF|<i style="color:#e0a58c">Family</i></span></div><div style="padding:9px 12px;font-size:12px;font-weight:600">Family<br><span style="color:#8B95A1;font-weight:400">/family</span></div></div>
+        <div style="width:170px;border:1px solid #E4E2DC;border-radius:8px;overflow:hidden;background:#fff"><div style="height:74px;background:var(--navy);display:flex;align-items:center;justify-content:center"><span class="serif" style="color:#F5F4F1;font-size:15px">About <i style="color:#e0a58c">Sarah</i></span></div><div style="padding:9px 12px;font-size:12px;font-weight:600">About Sarah<br><span style="color:#8B95A1;font-weight:400">/about-sarah</span></div></div>
+        <div style="width:170px;border:1px solid #E4E2DC;border-radius:8px;overflow:hidden;background:#fff"><div style="height:74px;background:var(--navy);display:flex;align-items:center;justify-content:center"><span class="serif" style="color:#F5F4F1;font-size:15px">Resources</span></div><div style="padding:9px 12px;font-size:12px;font-weight:600">Resources<br><span style="color:#8B95A1;font-weight:400">/resources</span></div></div>
+      </div>
+    </div>
+  </div>
+  <p>Use the filter box to find a page quickly, then <strong>click its card</strong>. The page opens looking exactly like the live website, except that editable text is marked with a subtle outline.</p>
+  <div class="note warn">The nine <strong>assessment pages</strong> also appear in this list, but they are not editable. They are scored psychological instruments, and even a small wording change would alter people's results. Anything you want changed on an assessment goes to Charlotte instead (see step six).</div>
+  <div class="note"><strong>Your login details</strong> — Address: <a href="https://executiveframe.co.nz/update" target="_blank">executiveframe.co.nz/update</a> · Password: <code style="background:#EDF2EF;border:1px solid #D5E0DA;border-radius:4px;padding:2px 8px;font-size:14px">sarahisediting2026$</code><br><span style="color:#5c6672;font-size:13px">This password is yours alone — anyone who has it can edit and publish the website, so please don't forward it.</span></div>
+  <div class="actionbox"><span class="lbl">Click here to</span> <a href="https://executiveframe.co.nz/update" target="_blank">log in to your website editor</a></div>
+  <div class="stepnav"><button onclick="go(0)">← Back</button><button class="primary" onclick="go(2)">Next: Edit text →</button></div>
+</section>
+
+<!-- STEP 3 -->
+<section class="step">
+  <div class="eyebrow">Step Three · Making Changes</div>
+  <h2>Click the words, <em>then type.</em></h2>
+  <p>Editable text shows a thin outline when you move your mouse over it. Click once and a cursor appears, along with a small formatting toolbar. Edit the words exactly as you would in a Word document. Anything without an outline is locked and simply will not respond to clicks.</p>
+  <div class="mock">
+    <div class="bar"><div class="file">Family <span>/family</span></div><span class="savebtn">Save &nbsp;•</span></div>
+    <div class="page">
+      <div class="peyebrow region" style="display:inline-block;padding:2px 6px">EXECUTIVE FRAME™ · FOR FAMILIES</div>
+      <div style="height:18px"></div>
+      <div class="toolbar">Normal text ▾ <span class="sep"></span> <b>B</b> <i>I</i> <span class="sep"></span> ⛓</div>
+      <div class="ph1"><span class="region" style="padding:0 4px">Families</span><br><em class="region" style="padding:0 4px">regulate together.</em></div>
+      <div class="plead region" style="display:inline-block;padding:4px 6px;margin-top:22px">Parenting in the hard moments no one prepares you for — created by psychologists, built by parents.</div>
+    </div>
+  </div>
+  <p>Notice the heading is in <strong>two outlined pieces</strong>: the plain part and the italic part. Both are yours to reword. The italic styling itself is protected, so however much you change the words, the accent always stays beautifully italic.</p>
+  <div class="try">
+    <div class="hint">Try it here — click and retype either part</div>
+    <div class="demoheading"><span contenteditable="true" spellcheck="false">Families </span><em contenteditable="true" spellcheck="false">regulate together.</em></div>
+    <div class="caption">This practice heading behaves like the real editor: the second part stays italic no matter what you type. Nothing you do on this page affects the website.</div>
+  </div>
+  <div class="note">One small habit to keep: the toolbar offers bold, italics and lists. Use them sparingly, the site's typography is part of the design, and plain rewording is almost always all you need.</div>
+  <div class="actionbox"><span class="lbl">Click here to</span> <a href="https://executiveframe.co.nz/update" target="_blank">open your editor and try a real edit</a></div>
+  <div class="stepnav"><button onclick="go(1)">← Back</button><button class="primary" onclick="go(3)">Next: Save &amp; publish →</button></div>
+</section>
+
+<!-- STEP 4 -->
+<section class="step">
+  <div class="eyebrow">Step Four · Going Live</div>
+  <h2>Save once, and it <em>publishes itself.</em></h2>
+  <p>When you have finished editing, press the blue <strong>Save</strong> button at the top right. That is your only job; everything after that is automatic.</p>
+  <div class="card">
+    <div class="pill">What happens after you press save</div>
+    <p style="margin-bottom:8px"><strong>1.</strong> Your change is recorded in the website's master copy, with a full history, so nothing is ever lost and anything can be undone by Charlotte.</p>
+    <p style="margin-bottom:8px"><strong>2.</strong> The system rebuilds the website with your new wording.</p>
+    <p style="margin-bottom:0"><strong>3.</strong> Within a few minutes, the change is live at executiveframe.co.nz. There is nothing to upload and no one to wait for.</p>
+  </div>
+  <div class="note">If you start editing and change your mind, use the menu (⋮, top right) and choose <strong>Discard unsaved changes</strong>. The page returns to exactly how it was, and nothing is published.</div>
+  <div class="actionbox"><span class="lbl">Click here to</span> <a href="https://executiveframe.co.nz" target="_blank">check your change on the live site</a> <span style="color:var(--muted);font-size:13px">(allow a few minutes after saving)</span></div>
+  <div class="stepnav"><button onclick="go(2)">← Back</button><button class="primary" onclick="go(4)">Next: What you can edit →</button></div>
+</section>
+
+<!-- STEP 5 -->
+<section class="step">
+  <div class="eyebrow">Step Five · Boundaries</div>
+  <h2>Yours to edit, <em>and locked.</em></h2>
+  <p>Across the nineteen content pages, 652 pieces of text are open to you. Everything else is locked on purpose, which is what makes the system safe to use freely.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div class="card" style="margin:0">
+      <div class="pill">You can edit</div>
+      <ul class="clean yes">
+        <li>Page titles and section headings</li>
+        <li>The small label lines above headings</li>
+        <li>Body paragraphs</li>
+        <li>Card headings, tags and descriptions</li>
+        <li>Button wording (e.g. “The Science”)</li>
+      </ul>
+    </div>
+    <div class="card" style="margin:0">
+      <div class="pill warn">Locked</div>
+      <ul class="clean no">
+        <li>All nine assessment pages</li>
+        <li>Navigation menu and footer</li>
+        <li>Diagrams, images and animations</li>
+        <li>Colours, fonts, layout and spacing</li>
+        <li>Where links and buttons point to</li>
+        <li>The intake form</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note warn"><strong>About links:</strong> you can reword a button or link, but you cannot change where it goes. If a link needs to point somewhere different, that is a request for Charlotte, because a wrong address silently breaks the site for visitors.</div>
+  <div class="actionbox"><span class="lbl">Click here to</span> <a href="https://executiveframe.co.nz/update" target="_blank">open your editor</a> <span class="sep2">·</span> <a href="https://executiveframe.co.nz" target="_blank">browse the live site</a></div>
+  <div class="stepnav"><button onclick="go(3)">← Back</button><button class="primary" onclick="go(5)">Next: Visual changes →</button></div>
+</section>
+
+<!-- STEP 6 -->
+<section class="step">
+  <div class="eyebrow">Step Six · Everything Else</div>
+  <h2>Visual changes go through <em>BugHerd.</em></h2>
+  <p>Anything beyond wording, a design tweak, a layout issue, something that looks wrong, a change to an assessment, a new link destination, goes through BugHerd exactly as it does now. Nothing about that has changed.</p>
+  <div class="card">
+    <div class="pill">The BugHerd habit</div>
+    <p style="margin-bottom:8px"><strong>1.</strong> <strong>Log in to BugHerd first</strong> at <a href="https://www.bugherd.com/users/sign_in" target="_blank">bugherd.com</a> with your BugHerd account. If you skip this, the comment tool won't appear on the site.</p>
+    <p style="margin-bottom:8px"><strong>2.</strong> Then browse the live site at executiveframe.co.nz — the BugHerd tool will be active in your browser.</p>
+    <p style="margin-bottom:8px"><strong>3.</strong> Click the <strong>+</strong> pin, then click the exact element you want changed — the diagram, image, button or section itself.</p>
+    <p style="margin-bottom:8px"><strong>4.</strong> Write a short comment describing what you'd like. A sentence is plenty: what it is now, and what you want instead.</p>
+    <p style="margin-bottom:0"><strong>5.</strong> BugHerd automatically captures the page address, the exact element, a screenshot and your browser details, and the request lands on Charlotte's task board — nothing else to send. She actions it and the site republishes.</p>
+  </div>
+  <div class="mock">
+    <div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">executiveframe.co.nz — live site with BugHerd active</span></div>
+    <div class="page" style="position:relative;padding:34px 36px 42px">
+      <div class="ph1" style="font-size:30px">The architecture <em>under the work.</em></div>
+      <div style="position:relative;display:inline-block;margin-top:20px">
+        <div style="width:120px;height:78px;border:1px solid #3a4653;border-radius:6px;display:flex;align-items:center;justify-content:center"><span style="color:#8B95A1;font-size:11px">◭ diagram</span></div>
+        <div style="position:absolute;top:-12px;right:-12px;width:26px;height:26px;border-radius:50%;background:#7ac043;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.4)">＋</div>
+      </div>
+      <div style="position:absolute;left:200px;top:88px;background:#fff;border-radius:8px;box-shadow:0 8px 26px rgba(0,0,0,.4);padding:14px 16px;max-width:280px">
+        <div style="font-size:11px;font-weight:700;color:#333;margin-bottom:6px">New task</div>
+        <div style="font-size:12px;color:#555;border:1px solid #E4E2DC;border-radius:6px;padding:8px 10px;font-style:italic">“Could the compass diagram be a little larger on desktop?”</div>
+        <div style="margin-top:10px;text-align:right"><span style="background:#7ac043;color:#fff;font-size:11px;font-weight:700;border-radius:5px;padding:5px 14px">Send to Charlotte</span></div>
+      </div>
+    </div>
+  </div>
+  <p>A good rule of thumb: <strong>if you can click into it and type, it's yours; if you can't, it's a BugHerd comment.</strong> That includes the assessments, diagrams, images, layout and spacing, the navigation and footer, and anywhere a link should point.</p>
+  <div class="actionbox"><span class="lbl">Click here to</span> <a href="https://www.bugherd.com/users/sign_in" target="_blank">log in to BugHerd first</a> <span class="sep2">·</span> <a href="https://executiveframe.co.nz" target="_blank">then open the live site</a></div>
+  <div class="stepnav"><button onclick="go(4)">← Back</button><button class="primary" onclick="go(6)">Next: New pages →</button></div>
+</section>
+
+<!-- STEP 7 -->
+<section class="step">
+  <div class="eyebrow">Step Seven · Growing The Site</div>
+  <h2>New pages start with a <em>request.</em></h2>
+  <p>When the site needs a whole new page rather than a change to an existing one, use the <strong>New Page Request form</strong>. It gathers everything Charlotte needs to build the page properly, in one pass, so there is no back-and-forth.</p>
+  <div class="card">
+    <div class="pill">What the form asks for</div>
+    <ul class="clean yes">
+      <li>The page title, and where it sits in the site's structure</li>
+      <li>Which arm of the practice it belongs to</li>
+      <li>A description of what the page should say and do</li>
+      <li>Any files you want included — documents, images, source material</li>
+    </ul>
+    <p style="margin-bottom:0">Your submission is tracked automatically and Charlotte is notified the moment it arrives. The new page is then built, matched to the site's design, and published like any other change.</p>
+  </div>
+  <p style="text-align:center;margin:28px 0 10px"><a href="https://tally.so/r/9qazxV" target="_blank" style="display:inline-block;background:var(--navy);color:var(--offwhite);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.5px;padding:15px 34px;border-radius:6px">Open the New Page Request form →</a></p>
+  <p style="text-align:center;color:var(--muted);font-size:13px">Bookmark it: tally.so/r/9qazxV</p>
+  <div class="stepnav"><button onclick="go(5)">← Back</button><button class="primary" onclick="go(7)">Next: Quick reference →</button></div>
+</section>
+
+<!-- STEP 7 -->
+<section class="step">
+  <div class="eyebrow">Step Eight · Keep This Handy</div>
+  <h2>Your quick <em>reference.</em></h2>
+  <table class="ref">
+    <tr><th style="width:42%">I want to…</th><th>What to do</th></tr>
+    <tr><td>Change wording on a page</td><td><a href="https://executiveframe.co.nz/update" target="_blank">executiveframe.co.nz/update</a> → Pages → open the page → click the text → type → Save</td></tr>
+    <tr><td>Undo something before saving</td><td>Menu (⋮) → Discard unsaved changes</td></tr>
+    <tr><td>Undo something after saving</td><td>Ask Charlotte — every version is kept, nothing is ever lost</td></tr>
+    <tr><td>Change a design, image or layout</td><td>BugHerd comment on the live site</td></tr>
+    <tr><td>Change anything on an assessment</td><td>BugHerd comment — assessments are never edited directly</td></tr>
+    <tr><td>Point a link somewhere new</td><td>BugHerd comment with the new destination</td></tr>
+    <tr><td>Request a whole new page</td><td><a href="https://tally.so/r/9qazxV" target="_blank">The New Page Request form</a> — tally.so/r/9qazxV</td></tr>
+  </table>
+  <div class="note">Log in at <a href="https://executiveframe.co.nz/update" target="_blank">executiveframe.co.nz/update</a> · Live site: <a href="https://executiveframe.co.nz" target="_blank">executiveframe.co.nz</a> · Questions: Charlotte — hello@charlotteprice.co.nz</div>
+  <div class="stepnav"><button onclick="go(6)">← Back</button><button class="primary" onclick="go(0)">Start again ↺</button></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="serif">Executive Frame<sup>™</sup></div>
+  Prepared by Charlotte Price Consulting · July 2026
+</footer>
+
+<script>
+  const sections=[...document.querySelectorAll('section.step')];
+  const tabs=[...document.querySelectorAll('nav.steps button')];
+  function go(n){
+    sections.forEach((s,i)=>s.classList.toggle('visible',i===n));
+    tabs.forEach((t,i)=>t.classList.toggle('active',i===n));
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  tabs.forEach(t=>t.addEventListener('click',()=>go(+t.dataset.step)));
+</script>
+
+</body>
+</html>
