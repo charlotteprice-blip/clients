@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charlotte Price Consulting Limited</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none !important}</style>
+</head>
+<body>
+<style>
+  :root{
+    --espresso:#37221F; --warm-brown:#56322F; --soft-blue:#9BBAFA; --pale-blue:#B6CDF9; --cream:#FFFBF4; --warm-yellow:#FFE8A5;
+    --canvas:#FFFBF4; --surface:#FFFBF4; --surface-alt:rgba(55,34,31,0.05);
+    --ink:#37221F; --ink-secondary:#56322F; --ink-muted:rgba(55,34,31,0.64);
+    --border:rgba(55,34,31,0.12); --border-strong:rgba(55,34,31,0.24);
+    --primary:#37221F; --primary-contrast:#FFFBF4; --primary-hover:#56322F;
+    --accent:#9BBAFA; --accent-soft:#B6CDF9; --highlight:#FFE8A5; --focus-ring:#9BBAFA;
+    --font-heading:"Field Gothic No. 21","Fira Sans",system-ui,sans-serif;
+    --font-body:"Fira Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px; --space-6:32px; --space-7:48px; --space-8:64px;
+    --radius-sm:8px; --radius-md:12px; --radius-lg:16px; --radius-pill:999px;
+    --shadow-sm:0 1px 2px rgba(55,34,31,0.06); --shadow-md:0 4px 12px rgba(55,34,31,0.10);
+    --container-app:1120px;
+    --c1:#37221F; --c2:#9BBAFA; --c3:#56322F; --cneutral:rgba(55,34,31,0.12);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--canvas);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:26px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4,.head{font-family:var(--font-heading);color:var(--ink);margin:0}
+  h1{font-size:32px;line-height:38px;font-weight:700}
+  h2{font-size:24px;line-height:30px;font-weight:600}
+  h3{font-size:20px;line-height:26px;font-weight:600}
+  h4{font-size:12px;line-height:16px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+  a{color:var(--ink)}
+  *:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+
+  .nav{height:64px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding:0 var(--space-4)}
+  .nav .logo{width:180px;height:auto;color:var(--ink);display:block}
+  .nav .label{color:var(--ink-muted)}
+  @media (min-width:768px){.nav{padding:0 var(--space-5)}}
+  @media (min-width:1024px){.nav{padding:0 var(--space-6)}}
+
+  .sheet{max-width:var(--container-app);margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-8);display:flex;flex-direction:column;gap:var(--space-6)}
+  @media (min-width:768px){.sheet{padding:var(--space-7) var(--space-5) var(--space-8);gap:var(--space-7)}}
+  @media (min-width:1024px){.sheet{padding-left:var(--space-6);padding-right:var(--space-6)}}
+
+  .label,.kicker{font-family:var(--font-body);font-size:12px;line-height:16px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-muted)}
+  header{display:flex;flex-direction:column;gap:var(--space-3)}
+  .masthead{display:none}
+  .standfirst{font-size:18px;line-height:28px;color:var(--ink-secondary);max-width:720px;margin:0}
+  section h2{margin-bottom:var(--space-2)}
+  .lede{color:var(--ink-secondary);max-width:720px;margin:0 0 var(--space-5)}
+
+  /* ---------- tree ---------- */
+  .tree{display:flex;flex-direction:column}
+  .parent{width:min(560px,100%);margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center;box-shadow:var(--shadow-sm)}
+  .parent h2{margin:var(--space-1) 0 var(--space-2)}
+  .parent p{margin:0;color:var(--ink-secondary);font-size:14px;line-height:20px}
+  .parent .facts{display:flex;justify-content:center;flex-wrap:wrap;gap:var(--space-2) var(--space-4);margin-top:var(--space-3);font-size:14px;line-height:20px;color:var(--ink-muted);font-variant-numeric:tabular-nums}
+  .parent .facts span b{color:var(--ink);font-weight:500}
+  .trunk{width:1px;height:var(--space-6);background:var(--border-strong);margin:0 auto}
+  .children{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-4);position:relative;padding-top:var(--space-5)}
+  .children::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:1px;background:var(--border-strong)}
+  .child{position:relative;appearance:none;text-align:left;cursor:pointer;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);color:var(--ink);font:inherit;font-size:14px;line-height:20px;transition:background-color .15s ease,border-color .15s ease,box-shadow .15s ease}
+  .child::before{content:"";position:absolute;top:calc(-1 * var(--space-5) - 1px);left:50%;width:1px;height:var(--space-5);background:var(--border-strong)}
+  .child:hover{background:rgba(55,34,31,0.04)}
+  .child[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+  .child h3{margin:0}
+  .child .status{display:inline-flex;align-items:center;border-radius:var(--radius-pill);padding:2px 10px;font-size:12px;line-height:16px;font-weight:500;background:var(--accent-soft);color:var(--ink);width:max-content}
+  .child .status i{display:none}
+  .child p{margin:0;color:var(--ink-secondary)}
+  .child small{font-size:12px;line-height:16px;color:var(--ink-muted)}
+  .child .cta{margin-top:auto;font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+  .child[aria-pressed="true"] .cta{text-decoration:none;color:var(--ink-muted);font-weight:500}
+  .child[aria-pressed="true"] .cta::after{content:" shown below"}
+  @media (max-width:1023px){.children{grid-template-columns:repeat(2,minmax(0,1fr))}.children::before{left:25%;right:25%}}
+  @media (max-width:639px){
+    .children{grid-template-columns:1fr;padding-left:var(--space-4);padding-top:0;margin-top:var(--space-4)}
+    .children::before{top:0;bottom:0;left:0;right:auto;width:1px;height:auto}
+    .child::before{top:50%;left:calc(-1 * var(--space-4));width:var(--space-4);height:1px}
+  }
+
+  /* ---------- detail panel ---------- */
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)}
+  .panel-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-3);align-items:flex-end;padding:var(--space-5) var(--space-5) 0}
+  .panel-head h2{margin:var(--space-1) 0 0}
+  .tabs{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--border);padding:var(--space-3) var(--space-5) 0}
+  .tab{appearance:none;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:var(--space-2) var(--space-3);min-height:44px;cursor:pointer;color:var(--ink-muted);font-family:var(--font-body);font-size:16px;line-height:26px;font-weight:500}
+  .tab:hover{color:var(--ink)}
+  .tab[aria-selected="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--accent)}
+  .tabpanel{padding:var(--space-5);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:var(--space-6);align-items:start}
+  .tabpanel[hidden]{display:none !important}
+  .tabpanel.single{grid-template-columns:1fr}
+  @media (max-width:767px){.tabpanel{grid-template-columns:1fr;gap:var(--space-5)}}
+  .prose p{margin:0 0 var(--space-3);color:var(--ink-secondary)}
+  .prose p:last-child{margin-bottom:0}
+  .prose strong{color:var(--ink);font-weight:600}
+  .prose em{font-style:italic}
+  .prose h4{margin:var(--space-4) 0 var(--space-1)}
+  .prose h4:first-child{margin-top:0}
+  .figs{display:flex;flex-wrap:wrap;gap:var(--space-2);margin:var(--space-2) 0 var(--space-3)}
+  .fig{background:var(--accent-soft);color:var(--ink);font-size:12px;line-height:16px;font-weight:500;padding:2px 10px;border-radius:var(--radius-pill);font-variant-numeric:tabular-nums}
+  .gap{color:var(--ink-muted);border:1px solid var(--border-strong);font-size:12px;line-height:16px;font-weight:500;padding:1px 10px;border-radius:var(--radius-pill)}
+  .verify{background:var(--highlight);color:var(--ink);font-size:12px;line-height:16px;font-weight:500;padding:2px 10px;border-radius:var(--radius-pill)}
+  .verify::before{content:"! ";font-weight:600}
+  .src{font-size:14px;line-height:20px;color:var(--ink-muted);margin-top:var(--space-2)}
+  .links{display:flex;flex-wrap:wrap;gap:var(--space-2);margin:var(--space-3) 0 var(--space-1)}
+  .btn{display:inline-flex;align-items:center;min-height:44px;padding:0 var(--space-4);border-radius:var(--radius-md);font-family:var(--font-body);font-size:16px;font-weight:600;text-decoration:none;border:1px solid var(--ink);color:var(--ink);background:transparent;transition:background-color .15s ease,color .15s ease}
+  .btn:hover{background:rgba(55,34,31,0.04)}
+  .btn.primary{background:var(--primary);color:var(--primary-contrast);border-color:var(--primary)}
+  .btn.primary:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
+
+  /* ---------- figures ---------- */
+  .figure{background:var(--surface-alt);border-radius:var(--radius-md);padding:var(--space-4) var(--space-4) var(--space-3);display:flex;flex-direction:column;gap:var(--space-3)}
+  .figure h4{margin:0;color:var(--ink)}
+  .figure .sub{font-size:14px;line-height:20px;color:var(--ink-muted);margin:calc(-1 * var(--space-2)) 0 0}
+  .figure svg{width:100%;height:auto;display:block;overflow:visible}
+  .figure text{font-family:var(--font-body);fill:var(--ink-secondary);font-size:12.5px}
+  .figure text.v{fill:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+  .figure text.axis{fill:var(--ink-muted);font-size:11px}
+  .figure line.base{stroke:var(--border-strong);stroke-width:1}
+  .legend{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-4);font-size:14px;line-height:20px;color:var(--ink-secondary)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:var(--space-2);vertical-align:-1px}
+  details.tbl{font-size:14px;line-height:20px;color:var(--ink-secondary)}
+  details.tbl summary{cursor:pointer;color:var(--ink-muted);min-height:24px}
+  details.tbl table{border-collapse:collapse;margin-top:var(--space-2);width:100%;font-variant-numeric:tabular-nums}
+  details.tbl th{text-align:left;padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--border-strong);font-weight:600;color:var(--ink)}
+  details.tbl td{text-align:left;padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--border)}
+  details.tbl td:not(:first-child),details.tbl th:not(:first-child){text-align:right}
+  details.tbl tr:nth-child(even) td{background:var(--surface-alt)}
+  .tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--cream);font-size:14px;line-height:20px;padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);opacity:0;transition:opacity .15s ease;z-index:10;max-width:260px}
+  .tip.on{opacity:1}
+
+  .steps{display:flex;flex-direction:column}
+  .step{display:grid;grid-template-columns:24px 1fr;gap:var(--space-3);padding:var(--space-2) 0;border-bottom:1px solid var(--border);align-items:start;font-size:14px;line-height:20px}
+  .step:last-child{border-bottom:0}
+  .step i{width:20px;height:20px;border-radius:50%;border:2px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-top:1px;font-style:normal;color:var(--ink)}
+  .step.done i{background:var(--accent-soft);border-color:var(--accent-soft)}
+  .step.next i{background:var(--highlight);border-color:var(--highlight)}
+  .step b{font-weight:600;color:var(--ink);display:block}
+  .step span{color:var(--ink-secondary)}
+  .step .state{font-size:12px;line-height:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-muted);font-weight:500}
+  .tl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-3);position:relative;padding-top:var(--space-5)}
+  .tl::before{content:"";position:absolute;top:8px;left:10%;right:10%;height:1px;background:var(--border-strong)}
+  .tl div{position:relative;font-size:14px;line-height:20px;color:var(--ink-secondary)}
+  .tl div::before{content:"";position:absolute;top:calc(-1 * var(--space-5) + 3px);left:50%;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:var(--ink);border:2px solid var(--canvas)}
+  .tl b{display:block;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums;text-align:center}
+  .tl span{display:block;text-align:center}
+  .tl .past::before{background:var(--accent)}
+  @media (max-width:767px){.tl{grid-template-columns:1fr;padding-left:var(--space-5);padding-top:0}.tl::before{top:0;bottom:0;left:5px;right:auto;width:1px;height:auto}.tl div::before{left:calc(-1 * var(--space-5) + 0px);top:5px;transform:none}.tl b,.tl span{text-align:left}}
+  .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3)}
+  @media (max-width:639px){.tiles{grid-template-columns:1fr}}
+  .tile{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-4)}
+  .tile .label{margin-bottom:var(--space-1)}
+  .tile .n{font-family:var(--font-heading);font-size:24px;line-height:30px;font-weight:600;font-variant-numeric:tabular-nums}
+  .tile p{margin:var(--space-1) 0 0;font-size:14px;line-height:20px;color:var(--ink-muted)}
+  .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:var(--space-2);align-items:center;font-size:14px;line-height:20px}
+  .flow .node{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-3);text-align:center;color:var(--ink-secondary)}
+  .flow .node b{display:block;font-weight:600;color:var(--ink)}
+  .flow .arrow{color:var(--ink-muted);text-align:center}
+  @media (max-width:639px){.flow{grid-template-columns:1fr}.flow .arrow{transform:rotate(90deg)}}
+  .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)}
+  .cell{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-3);font-size:14px;line-height:20px;color:var(--ink-secondary)}
+  .cell b{display:block;color:var(--ink);font-weight:600}
+  .pos{position:relative;height:170px;border-left:1px solid var(--border-strong);border-bottom:1px solid var(--border-strong);margin:var(--space-2) 0 var(--space-6) 0}
+  .pos span{position:absolute;font-size:14px;line-height:20px;color:var(--ink-secondary);transform:translate(-50%,-50%);white-space:nowrap}
+  .pos span.me{background:var(--highlight);color:var(--ink);padding:2px 10px;border-radius:var(--radius-pill);font-weight:500;font-size:12px;line-height:16px}
+  .pos .ax{position:absolute;font-size:12px;line-height:16px;color:var(--ink-muted);letter-spacing:.04em;text-transform:uppercase;font-weight:500;transform:none;white-space:nowrap}
+
+  .company{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-5);align-items:start}
+  @media (max-width:767px){.company{grid-template-columns:1fr}}
+  .open{border-left:3px solid var(--border-strong);padding-left:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)}
+  .open p{margin:0;font-size:14px;line-height:20px;color:var(--ink-secondary)}
+  .open span{display:block;font-size:12px;line-height:16px;letter-spacing:.04em;text-transform:uppercase;font-weight:500;color:var(--ink);margin-bottom:2px}
+  footer{font-size:14px;line-height:20px;color:var(--ink-muted);display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;border-top:1px solid var(--border);padding-top:var(--space-4)}
+  @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+  @media print{.tabpanel[hidden]{display:grid !important}.tabs{display:none}.child{break-inside:avoid}}
+</style>
+
+<div class="nav"><svg class="logo" role="img" aria-label="Charlotte Price" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" viewBox="10 55 341 76" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><g/><clipPath id="34779908e9"><rect x="0" width="333" y="0" height="68"/></clipPath></defs><g transform="matrix(1, 0, 0, 1, 14, 59)"><g clip-path="url(#34779908e9)"><g fill="currentColor" fill-opacity="1"><g transform="translate(0.786491, 55.135225)"><g><path d="M 11.65625 -14.296875 L 15.71875 -14.296875 L 15.71875 -8.546875 C 15.71875 -5.484375 15.195312 -3.242188 14.15625 -1.828125 C 13.125 -0.410156 11.554688 0.296875 9.453125 0.296875 L 9.265625 0.296875 C 6.910156 0.296875 5.273438 -0.410156 4.359375 -1.828125 C 3.441406 -3.242188 2.984375 -5.484375 2.984375 -8.546875 L 2.984375 -33.3125 C 2.984375 -36.375 3.441406 -38.613281 4.359375 -40.03125 C 5.273438 -41.445312 6.910156 -42.15625 9.265625 -42.15625 L 9.453125 -42.15625 C 11.554688 -42.15625 13.125 -41.445312 14.15625 -40.03125 C 15.195312 -38.613281 15.71875 -36.375 15.71875 -33.3125 L 15.71875 -29.125 L 11.65625 -29.125 L 11.65625 -34.078125 C 11.65625 -35.597656 11.492188 -36.707031 11.171875 -37.40625 C 10.859375 -38.101562 10.285156 -38.453125 9.453125 -38.453125 L 9.265625 -38.453125 C 8.429688 -38.453125 7.851562 -38.101562 7.53125 -37.40625 C 7.21875 -36.707031 7.0625 -35.597656 7.0625 -34.078125 L 7.0625 -8.3125 C 7.0625 -6.632812 7.226562 -5.414062 7.5625 -4.65625 C 7.90625 -3.90625 8.472656 -3.53125 9.265625 -3.53125 L 9.453125 -3.53125 C 10.242188 -3.53125 10.804688 -3.90625 11.140625 -4.65625 C 11.484375 -5.414062 11.65625 -6.632812 11.65625 -8.3125 Z M 11.65625 -14.296875 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(24.640049, 55.135225)"><g><path d="M 3.46875 -41.859375 L 7.53125 -41.859375 L 7.53125 -24.515625 L 12.140625 -24.515625 L 12.140625 -41.859375 L 16.203125 -41.859375 L 16.203125 0 L 12.140625 0 L 12.140625 -20.75 L 7.53125 -20.75 L 7.53125 0 L 3.46875 0 Z M 3.46875 -41.859375 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(50.167456, 55.135225)"><g><path d="M 15.90625 0 L 11.84375 0 L 11.84375 -18.296875 L 7.296875 -18.296875 L 7.296875 0 L 3.234375 0 L 3.234375 -33.3125 C 3.234375 -36.375 3.679688 -38.613281 4.578125 -40.03125 C 5.472656 -41.445312 7.097656 -42.15625 9.453125 -42.15625 L 9.625 -42.15625 C 11.738281 -42.15625 13.3125 -41.445312 14.34375 -40.03125 C 15.382812 -38.613281 15.90625 -36.375 15.90625 -33.3125 Z M 7.296875 -34.078125 L 7.296875 -22.0625 L 11.84375 -22.0625 L 11.84375 -34.078125 C 11.84375 -35.597656 11.691406 -36.707031 11.390625 -37.40625 C 11.085938 -38.101562 10.519531 -38.453125 9.6875 -38.453125 L 9.5 -38.453125 C 8.664062 -38.453125 8.085938 -38.101562 7.765625 -37.40625 C 7.453125 -36.707031 7.296875 -35.597656 7.296875 -34.078125 Z M 7.296875 -34.078125 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(75.156839, 55.135225)"><g><path d="M 16.203125 0 L 12.140625 0 L 12.140625 -16.203125 C 12.140625 -17.722656 11.878906 -18.820312 11.359375 -19.5 C 10.835938 -20.175781 9.863281 -20.515625 8.4375 -20.515625 L 7.53125 -20.515625 L 7.53125 0 L 3.46875 0 L 3.46875 -41.859375 L 7.828125 -41.859375 C 10.265625 -41.859375 12.070312 -41.566406 13.25 -40.984375 C 14.425781 -40.410156 15.210938 -39.503906 15.609375 -38.265625 C 16.003906 -37.035156 16.203125 -35.441406 16.203125 -33.484375 L 16.203125 -28.046875 C 16.203125 -26.765625 15.972656 -25.65625 15.515625 -24.71875 C 15.054688 -23.789062 14.191406 -23.003906 12.921875 -22.359375 C 14.191406 -21.722656 15.054688 -20.925781 15.515625 -19.96875 C 15.972656 -19.007812 16.203125 -17.894531 16.203125 -16.625 Z M 7.53125 -23.859375 L 8.4375 -23.859375 C 9.863281 -23.859375 10.835938 -24.207031 11.359375 -24.90625 C 11.878906 -25.601562 12.140625 -26.691406 12.140625 -28.171875 L 12.140625 -33.484375 C 12.140625 -34.597656 12.097656 -35.515625 12.015625 -36.234375 C 11.941406 -36.953125 11.644531 -37.476562 11.125 -37.8125 C 10.601562 -38.15625 9.707031 -38.328125 8.4375 -38.328125 L 7.53125 -38.328125 Z M 7.53125 -23.859375 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(99.847322, 55.135225)"><g><path d="M 3.46875 0 L 3.46875 -41.859375 L 7.53125 -41.859375 L 7.53125 -3.765625 L 13.09375 -3.765625 L 13.09375 0 Z M 3.46875 0 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(119.277056, 55.135225)"><g><path d="M 9.453125 0.296875 L 9.265625 0.296875 C 7.117188 0.296875 5.535156 -0.410156 4.515625 -1.828125 C 3.492188 -3.242188 2.984375 -5.484375 2.984375 -8.546875 L 2.984375 -33.3125 C 2.984375 -36.375 3.492188 -38.613281 4.515625 -40.03125 C 5.535156 -41.445312 7.117188 -42.15625 9.265625 -42.15625 L 9.453125 -42.15625 C 11.796875 -42.15625 13.425781 -41.445312 14.34375 -40.03125 C 15.257812 -38.613281 15.71875 -36.375 15.71875 -33.3125 L 15.71875 -8.546875 C 15.71875 -5.484375 15.257812 -3.242188 14.34375 -1.828125 C 13.425781 -0.410156 11.796875 0.296875 9.453125 0.296875 Z M 9.265625 -3.46875 L 9.453125 -3.46875 C 10.242188 -3.46875 10.804688 -3.84375 11.140625 -4.59375 C 11.484375 -5.351562 11.65625 -6.570312 11.65625 -8.25 L 11.65625 -34.078125 C 11.65625 -35.597656 11.492188 -36.707031 11.171875 -37.40625 C 10.859375 -38.101562 10.285156 -38.453125 9.453125 -38.453125 L 9.265625 -38.453125 C 8.429688 -38.453125 7.851562 -38.101562 7.53125 -37.40625 C 7.21875 -36.707031 7.0625 -35.597656 7.0625 -34.078125 L 7.0625 -8.25 C 7.0625 -6.570312 7.226562 -5.351562 7.5625 -4.59375 C 7.90625 -3.84375 8.472656 -3.46875 9.265625 -3.46875 Z M 9.265625 -3.46875 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(143.429437, 55.135225)"><g><path d="M 0.890625 -38.15625 L 0.890625 -41.859375 L 13.75 -41.859375 L 13.75 -38.15625 L 9.390625 -38.15625 L 9.390625 0 L 5.328125 0 L 5.328125 -38.15625 Z M 0.890625 -38.15625 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(163.935296, 55.135225)"><g><path d="M 0.890625 -38.15625 L 0.890625 -41.859375 L 13.75 -41.859375 L 13.75 -38.15625 L 9.390625 -38.15625 L 9.390625 0 L 5.328125 0 L 5.328125 -38.15625 Z M 0.890625 -38.15625 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(184.441155, 55.135225)"><g><path d="M 3.46875 0 L 3.46875 -41.859375 L 13.09375 -41.859375 L 13.09375 -38.15625 L 7.53125 -38.15625 L 7.53125 -24.515625 L 13.09375 -24.515625 L 13.09375 -20.75 L 7.53125 -20.75 L 7.53125 -3.765625 L 13.09375 -3.765625 L 13.09375 0 Z M 3.46875 0 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(205.783939, 55.135225)"><g/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(221.208458, 55.135225)"><g><path d="M 3.46875 0 L 3.46875 -41.859375 L 5.796875 -41.859375 C 8.585938 -41.859375 10.726562 -41.546875 12.21875 -40.921875 C 13.71875 -40.304688 14.753906 -39.351562 15.328125 -38.0625 C 15.910156 -36.769531 16.203125 -35.085938 16.203125 -33.015625 L 16.203125 -27.03125 C 16.203125 -24.28125 15.582031 -22.125 14.34375 -20.5625 C 13.113281 -19.007812 10.84375 -18.234375 7.53125 -18.234375 L 7.53125 0 Z M 7.53125 -21.703125 L 7.890625 -21.703125 C 9.566406 -21.703125 10.691406 -22.082031 11.265625 -22.84375 C 11.847656 -23.601562 12.140625 -24.816406 12.140625 -26.484375 L 12.140625 -34.03125 C 12.140625 -35.539062 11.847656 -36.632812 11.265625 -37.3125 C 10.691406 -37.988281 9.566406 -38.328125 7.890625 -38.328125 L 7.53125 -38.328125 Z M 7.53125 -21.703125 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(244.523993, 55.135225)"><g><path d="M 16.203125 0 L 12.140625 0 L 12.140625 -16.203125 C 12.140625 -17.722656 11.878906 -18.820312 11.359375 -19.5 C 10.835938 -20.175781 9.863281 -20.515625 8.4375 -20.515625 L 7.53125 -20.515625 L 7.53125 0 L 3.46875 0 L 3.46875 -41.859375 L 7.828125 -41.859375 C 10.265625 -41.859375 12.070312 -41.566406 13.25 -40.984375 C 14.425781 -40.410156 15.210938 -39.503906 15.609375 -38.265625 C 16.003906 -37.035156 16.203125 -35.441406 16.203125 -33.484375 L 16.203125 -28.046875 C 16.203125 -26.765625 15.972656 -25.65625 15.515625 -24.71875 C 15.054688 -23.789062 14.191406 -23.003906 12.921875 -22.359375 C 14.191406 -21.722656 15.054688 -20.925781 15.515625 -19.96875 C 15.972656 -19.007812 16.203125 -17.894531 16.203125 -16.625 Z M 7.53125 -23.859375 L 8.4375 -23.859375 C 9.863281 -23.859375 10.835938 -24.207031 11.359375 -24.90625 C 11.878906 -25.601562 12.140625 -26.691406 12.140625 -28.171875 L 12.140625 -33.484375 C 12.140625 -34.597656 12.097656 -35.515625 12.015625 -36.234375 C 11.941406 -36.953125 11.644531 -37.476562 11.125 -37.8125 C 10.601562 -38.15625 9.707031 -38.328125 8.4375 -38.328125 L 7.53125 -38.328125 Z M 7.53125 -23.859375 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(269.214459, 55.135225)"><g><path d="M 3.46875 0 L 3.46875 -41.859375 L 7.53125 -41.859375 L 7.53125 0 Z M 3.46875 0 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(286.073735, 55.135225)"><g><path d="M 11.65625 -14.296875 L 15.71875 -14.296875 L 15.71875 -8.546875 C 15.71875 -5.484375 15.195312 -3.242188 14.15625 -1.828125 C 13.125 -0.410156 11.554688 0.296875 9.453125 0.296875 L 9.265625 0.296875 C 6.910156 0.296875 5.273438 -0.410156 4.359375 -1.828125 C 3.441406 -3.242188 2.984375 -5.484375 2.984375 -8.546875 L 2.984375 -33.3125 C 2.984375 -36.375 3.441406 -38.613281 4.359375 -40.03125 C 5.273438 -41.445312 6.910156 -42.15625 9.265625 -42.15625 L 9.453125 -42.15625 C 11.554688 -42.15625 13.125 -41.445312 14.15625 -40.03125 C 15.195312 -38.613281 15.71875 -36.375 15.71875 -33.3125 L 15.71875 -29.125 L 11.65625 -29.125 L 11.65625 -34.078125 C 11.65625 -35.597656 11.492188 -36.707031 11.171875 -37.40625 C 10.859375 -38.101562 10.285156 -38.453125 9.453125 -38.453125 L 9.265625 -38.453125 C 8.429688 -38.453125 7.851562 -38.101562 7.53125 -37.40625 C 7.21875 -36.707031 7.0625 -35.597656 7.0625 -34.078125 L 7.0625 -8.3125 C 7.0625 -6.632812 7.226562 -5.414062 7.5625 -4.65625 C 7.90625 -3.90625 8.472656 -3.53125 9.265625 -3.53125 L 9.453125 -3.53125 C 10.242188 -3.53125 10.804688 -3.90625 11.140625 -4.65625 C 11.484375 -5.414062 11.65625 -6.632812 11.65625 -8.3125 Z M 11.65625 -14.296875 "/></g></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(309.927293, 55.135225)"><g><path d="M 3.46875 0 L 3.46875 -41.859375 L 13.09375 -41.859375 L 13.09375 -38.15625 L 7.53125 -38.15625 L 7.53125 -24.515625 L 13.09375 -24.515625 L 13.09375 -20.75 L 7.53125 -20.75 L 7.53125 -3.765625 L 13.09375 -3.765625 L 13.09375 0 Z M 3.46875 0 "/></g></g></g></g></g></svg><span class="label">Company brief, September 2026</span></div>
+<div class="sheet">
+<header><div class="label">Charlotte Price Consulting Limited</div>
+<h1>One company, four streams</h1>
+<p class="standfirst">The sole trader practice becomes Charlotte Price Consulting Limited, a New Zealand company holding the consulting work alongside 3 products, all under one name.</p></header>
+<section><div class="tree">
+<div class="parent"><div class="label">Parent company</div><h2>Charlotte Price Consulting Limited</h2>
+<p>Organisational psychology consulting and its products, Christchurch, New Zealand.</p>
+<div class="facts"><span>Company number <b>9456637</b></span><span>Name reserved <b>3 September 2026</b></span><span>Sole director and shareholder</span><span>Invoicing changeover <b>1 November 2026</b></span></div></div>
+<div class="trunk"></div><div class="children">
+<button class="child" type="button" aria-pressed="false" data-stream="consulting">
+<div class="label">Stream</div><h3>Consulting practice</h3><span class="status"><i></i>Trading</span>
+<p>Applied psychology as practical support for people and organisations.</p><small>Origin: The practice itself, trading since August 2023</small><span class="cta">Open detail</span></button>
+<button class="child" type="button" aria-pressed="false" data-stream="themescape">
+<div class="label">Stream</div><h3>Themescape</h3><span class="status"><i></i>Built and live</span>
+<p>See your coded qualitative themes come to life, without the data leaving your machine.</p><small>Origin: Generalised from the thematic maps built for the doctoral thesis</small><span class="cta">Open detail</span></button>
+<button class="child" type="button" aria-pressed="false" data-stream="neurotap">
+<div class="label">Stream</div><h3>NeuroTap</h3><span class="status"><i></i>Delivered in session</span>
+<p>Tap to run automations that carry a session's work into daily life.</p><small>Origin: Launched September 2025, now moving under the company</small><span class="cta">Open detail</span></button>
+<button class="child" type="button" aria-pressed="false" data-stream="clientbridge">
+<div class="label">Stream</div><h3>ClientBridge</h3><span class="status"><i></i>In build</span>
+<p>Structured support, between sessions. A practitioner led platform for the work that happens between appointments.</p><small>Origin: Renamed from the Coaching with Charlotte app built for this practice</small><span class="cta">Open detail</span></button>
+</div></div></section>
+<section class="panel" id="panel-consulting" hidden><div class="panel-head"><div><div class="label">Trading</div><h2>Consulting practice</h2></div><div class="src" style="margin:0">Origin: The practice itself, trading since August 2023</div></div>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" type="button" aria-selected="true" aria-controls="consulting-overview" id="tab-consulting-overview">Overview</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="consulting-does" id="tab-consulting-does">What it does</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="consulting-who" id="tab-consulting-who">Who it is for</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="consulting-pricing" id="tab-consulting-pricing">Pricing</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="consulting-scale" id="tab-consulting-scale">Upscaling</button>
+</div>
+<div class="tabpanel" id="consulting-overview" role="tabpanel"><div class="prose"><h4>What it is</h4><p>Applied psychology delivered as practical support. The public description reads organisational psychology and vocational consulting for teens and adults navigating complex work, study and career demands, with executive functioning and career support, neurodivergence informed consulting for adults with ADHD, workshop facilitation and organisational psychology projects.</p>
+  <h4>Purpose in the company</h4><p><strong>It funds everything else</strong>, and every product in this brief began as something built for a client of this practice. It is the only stream with recorded revenue and the only one presently full.</p>
+  <h4>Where it stands</h4><p>Trading since August 2023 as a sole trader, moving into the company at the invoicing changeover. Roughly 11 individual clients and 6 business clients are active. The Notion client boards hold 22 coaching entries, 9 business entries and 4 employment resolution matters in total.</p><div class="figs"><span class="fig">Trading since Aug 2023</span><span class="fig">11 individual clients active</span><span class="fig">About 6 business clients</span><span class="fig">22 coaching records on file</span></div><div class="links"><a class="btn primary" href="https://www.charlotteprice.co.nz/practice" target="_blank" rel="noopener">See the practice page</a><a class="btn" href="https://www.charlotteprice.co.nz/workshops" target="_blank" rel="noopener">See the workshops</a><a class="btn" href="https://calendar.app.google/7Q6ztZtWKm5QW8te7" target="_blank" rel="noopener">Book a session</a></div></div><div><div class="figure"><h4>Weekly capacity</h4><p class="sub">20 hours a week available to the company, net of doctoral and teaching work</p><div id="ch-capacity"></div><div class="legend"><span><i style="background:var(--c1)"></i>Coaching hours committed</span><span><i style="background:var(--cneutral)"></i>Left for everything else</span></div><details class="tbl"><summary>Figures as a table</summary><table><tr><th>Item</th><th>Hours a week</th></tr><tr><td>Coaching, 11 clients at 1 hour</td><td>11</td></tr><tr><td>Left for projects, products, admin, marketing</td><td>9</td></tr><tr><td>Total available</td><td>20</td></tr></table></details></div></div></div>
+<div class="tabpanel" id="consulting-does" role="tabpanel" hidden><div class="prose"><h4>Three session types</h4><p>Practical skill sessions cover planning, task management and self regulation. Career sessions cover CV, interview preparation and wellbeing support. Student strategy sessions cover assignment systems, deadline tracking and university navigation. Sessions default to 50 minutes with a video link, booked through a Google Calendar appointment page or an intake form.</p>
+  <h4>Three consulting lines</h4><p>Organisational psychology covers team dynamics, role design, organisational reviews, change readiness and restructure support. HR consulting covers employment situations, policy drafting, performance management and building HR infrastructure for businesses without an internal function. Workflow, automation and AI covers process review, automation build with testing, process maps, standard operating procedures and staff training. Each line runs discovery call, intake session, feasibility analysis, scope and proposal, terms of engagement and a deposit invoice before build, with a completion invoice at the end.</p>
+  <h4>Workshops</h4><p>Work Smarter with Claude, a 3 hour introductory workshop for busy professionals, runs Saturday 3 October 2026 at Crafted Coffee, Christchurch, limited to 20 places, with a 7 item starter pack.</p>
+  <h4>Assessment</h4><p>A standard psychometric reporting format, version 1.3 of 3 September 2026, produces a client PDF from form responses for the DASS 21 and an executive function battery. The reports state that the practice is not a clinical mental health service.</p></div><div><div class="figure"><h4>How an engagement runs</h4><div class="steps"><div class="step done"><i>&#10003;</i><div><b>Discovery call</b><span>20 to 30 minutes, no fee</span></div></div><div class="step done"><i>&#10003;</i><div><b>Intake session</b><span>190 dollars fixed, 30 to 50 minutes, written quote within 3 to 5 working days</span></div></div><div class="step done"><i>&#10003;</i><div><b>Feasibility analysis</b><span>Tools, desired automations, roadblocks, estimated hours, recommended package</span></div></div><div class="step done"><i>&#10003;</i><div><b>Scope and proposal</b><span>Phased deliverables and timeline, priced in New Zealand dollars excluding GST</span></div></div><div class="step done"><i>&#10003;</i><div><b>Terms and deposit</b><span>Signed terms of engagement, then invoice 1</span></div></div><div class="step done"><i>&#10003;</i><div><b>Build and completion</b><span>Hours drawn down as work progresses, invoice 2 on completion</span></div></div></div><p class="src">Source: Notion, Business Pricing and the scope and feasibility templates.</p></div></div></div>
+<div class="tabpanel single" id="consulting-who" role="tabpanel" hidden><div class="prose"><p>Individuals, organisations and clinicians across New Zealand, from Christchurch. Coaching clients are largely university and secondary school students, and much of the individual work supports neurodivergent clients including those with ADHD.</p>
+  <h4>Five audience segments on record</h4><p>Professionals in high demand roles. University students with ADHD. Service based business owners. HR and employment contexts. BNI and professional networks, where referral is the one recorded enquiry channel and Charlotte holds the chapter's organisation and process position.</p>
+  <h4>Proof points</h4><p>A neurodiversity and campus inclusion workshop for the University of Canterbury graduate school researcher development team, and a session at the New Zealand Law Society Lawyer for Child Conference in May 2026 with 163 registered participants.</p><div class="figs"><span class="fig">163 participants, May 2026</span><span class="fig">Instagram 93 followers, 4 posts</span><span class="gap">Mailing list size not recorded</span></div></div></div>
+<div class="tabpanel" id="consulting-pricing" role="tabpanel" hidden><div class="prose"><p>Three client handouts, one per line, set the published rate card. Every engagement opens with a fixed fee intake session of 30 to 50 minutes, after which a written quote follows within 3 to 5 working days. Each line is priced by the hour with hour banks drawn down as work progresses, in 4 packages from Essentials at 3 hours to Intensive at 20, unused hours non refundable but transferable within 12 months. A retainer advisory follows a completed package at 875 dollars a month for about 5 hours on a 3 month minimum, covering ongoing questions, platform updates, process upkeep and staff training, with a 15 per cent loyalty discount bringing renewal to 744 dollars a month.</p>
+  <h4>Session rates in use</h4><p>The services list in the invoicing system, read 5 September 2026, carries the rates actually billed for individual work, excluding GST. A practical skills session is 190 dollars, coaching is 170 dollars, vocational support is 135 dollars or 50 dollars at the student rate, and a service fee of 20 dollars, or 10 dollars for students, is applied. A 25 dollar discount applies to BNI referrals. Session pricing is not published on the website, where the only price shown is the workshop.</p><div class="figs"><span class="fig">Intake 190 dollars</span><span class="fig">Retainer 875 dollars a month</span><span class="fig">Workshop 175 dollars plus GST</span><span class="fig">BNI discount 25 dollars</span></div><p class="src">Source: Client pricing handouts for organisational psychology, HR consulting and AI support; invoicing services list, 5 September 2026; charlotteprice.co.nz/workshops. All prices New Zealand dollars.</p></div><div><div class="figure"><h4>Session rates in use</h4><p class="sub">New Zealand dollars per session, excluding GST, invoicing services list</p><div id="ch-sessions"></div><details class="tbl"><summary>Figures as a table</summary><table><tr><th>Service</th><th>Price</th></tr><tr><td>Practical skills session</td><td>190</td></tr><tr><td>Coaching</td><td>170</td></tr><tr><td>Vocational support</td><td>135</td></tr><tr><td>Vocational support, student</td><td>50</td></tr><tr><td>Service fee</td><td>20</td></tr><tr><td>Service fee, student</td><td>10</td></tr><tr><td>BNI discount</td><td>25 off</td></tr></table></details></div><div class="figure"><h4>Hourly rate by line</h4><p class="sub">New Zealand dollars per hour, excluding GST, consulting packages</p><div id="ch-rates"></div><details class="tbl"><summary>Package ladder as a table</summary><table><tr><th>Line</th><th>Hourly</th><th>3 hrs</th><th>6 hrs</th><th>10 hrs</th><th>20 hrs</th></tr><tr><td>Organisational psychology</td><td>195</td><td>555</td><td>1,080</td><td>1,750</td><td>3,300</td></tr><tr><td>HR consulting</td><td>185</td><td>525</td><td>1,020</td><td>1,650</td><td>3,100</td></tr><tr><td>Workflow, automation and AI</td><td>225</td><td>645</td><td>1,260</td><td>2,050</td><td>3,900</td></tr></table></details></div></div></div>
+<div class="tabpanel single" id="consulting-scale" role="tabpanel" hidden><div class="prose"><p>Capacity is the constraint, not demand. Eleven weekly coaching hours leave 9 hours a week for projects, products, administration and marketing, and one automation project can take 20 hours. Growth therefore comes from price and productisation rather than from more clients, and the stated intention is to hold volume roughly where it is while taking only clients whose fee and time investment balance.</p>
+  <h4>What is being productised</h4><p>Psychometric reporting, already templated so that a new instrument is added by writing a data file. The intake and scoping pipeline, already automated end to end from form to proposal. The workshop, which is the first fixed fee, many to one product in the practice.</p>
+  <h4>Being settled</h4><p>Professional indemnity and public liability cover in the company's name, and confirmation that the June 2026 rate card stands for company invoicing.</p></div></div>
+</section>
+<section class="panel" id="panel-themescape" hidden><div class="panel-head"><div><div class="label">Built and live</div><h2>Themescape</h2></div><div class="src" style="margin:0">Origin: Generalised from the thematic maps built for the doctoral thesis</div></div>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" type="button" aria-selected="true" aria-controls="themescape-overview" id="tab-themescape-overview">Overview</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="themescape-does" id="tab-themescape-does">What it does</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="themescape-who" id="tab-themescape-who">Who it is for</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="themescape-pricing" id="tab-themescape-pricing">Pricing</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="themescape-scale" id="tab-themescape-scale">Upscaling</button>
+</div>
+<div class="tabpanel" id="themescape-overview" role="tabpanel"><div class="prose"><h4>What it is</h4><p>A subscription web application that turns a spreadsheet of coded qualitative data into a living, interactive display of themes, codes and the quotes behind them, ready to explore, refine and present. It ships as 2 parts, a structured spreadsheet template and a browser viewer, and needs no installation.</p>
+  <h4>Purpose in the company</h4><p><strong>It converts doctoral method into a product.</strong> It generalises the interactive thematic maps built for the thesis and is the nearest of the 3 products to earning revenue.</p>
+  <h4>Where it stands</h4><p>Built and live. The marketing page sits on the main site and the product on its own subdomain with home, demo, sign up, login and privacy pages, hosted on Netlify with Supabase for accounts and Stripe for payment. The free access path was tested end to end on 30 July 2026.</p><div class="figs"><span class="fig">Named 15 July 2026</span><span class="fig">Site live</span><span class="fig">Build complete</span><span class="fig">7 day free trial</span></div><div class="links"><a class="btn primary" href="https://themescape.charlotteprice.co.nz/" target="_blank" rel="noopener">Launch Themescape</a><a class="btn" href="https://themescape.charlotteprice.co.nz/demo/" target="_blank" rel="noopener">Try the live demo</a><a class="btn" href="https://www.charlotteprice.co.nz/themescape" target="_blank" rel="noopener">See the product page</a><a class="btn" href="https://themescape.charlotteprice.co.nz/privacy" target="_blank" rel="noopener">Read the privacy documentation</a></div></div><div><div class="figure"><h4>What exists today</h4><p class="sub">The product surface a researcher meets</p><div class="grid2"><div class="cell"><b>Marketing page</b>On the main site, with features, workflow, privacy pledge, pricing and FAQ</div><div class="cell"><b>Live demo</b>Loaded with a sample dataset, all views and modes, no account needed</div><div class="cell"><b>Spreadsheet template</b>Data, framework and participants tabs, downloaded by members</div><div class="cell"><b>Hosted viewer and editor</b>Behind sign up and login, with Work and Present modes</div><div class="cell"><b>Sign up with trial</b>Annual or monthly plan, 7 days free before any charge</div><div class="cell"><b>Privacy page</b>The browser only data model, with wording for ethics applications</div></div></div></div></div>
+<div class="tabpanel" id="themescape-does" role="tabpanel" hidden><div class="prose"><h4>From a coded sheet to a live display</h4><p>The researcher codes in the Themescape spreadsheet, a structured sheet with a tab for data, a tab for the framework and a tab for participants. They export each tab as CSV and drop the files into the viewer, which checks the headers against a fixed contract, refuses anything that does not match, and renders once the required files are present. Data and framework are required; participants and settings are optional.</p>
+  <h4>Three ways to look, two ways to work</h4><p>A node network, an organisational hierarchy and a file tree. Work mode lets the researcher refine and reorder, with edits exporting cleanly back to the spreadsheet or to Word. Present mode is built for a talk, a supervision or a conference session. Search runs across codes and quotes, definitions sit beside quotes, and the palette is the researcher's own.</p>
+  <h4>Verbatim is protected</h4><p>Verbatim quotes are never altered. A separate refined column carries any presentation wording, and the viewer toggles between the two.</p>
+  <h4>What it is not</h4><p>It does not replace NVivo or ATLAS.ti. Those tools are for coding; Themescape is for seeing and sharing what has been coded.</p><p class="src">Source: charlotteprice.co.nz/themescape; themescape.charlotteprice.co.nz/demo.</p></div><div><div class="figure"><h4>Where the data goes</h4><p class="sub">The browser only model behind the privacy pledge</p><div class="flow"><div class="node"><b>Researcher's sheet</b>Data, framework, participants, settings</div><div class="arrow">&#8594;</div><div class="node"><b>CSV export</b>One file per tab, read in the browser</div><div class="arrow">&#8594;</div><div class="node"><b>Viewer</b>Held in memory only, cleared on refresh</div></div><p class="src">Nothing is uploaded, stored or transmitted. An opt in live mode reads a published Google Sheet for non sensitive data only, and the site offers ethics application wording on that basis.</p><h4 style="margin-top:14px">Views and modes</h4><div class="grid2"><div class="cell"><b>Node network</b>Themes, codes and quotes as a connected map</div><div class="cell"><b>Hierarchy</b>Drill down from theme to code to quote</div><div class="cell"><b>File tree</b>A folder style listing for scanning</div><div class="cell"><b>Work and Present modes</b>Refine and export, or show cleanly to a room</div></div></div></div></div>
+<div class="tabpanel single" id="themescape-who" role="tabpanel" hidden><div class="prose"><p>Qualitative researchers, written for a non technical postgraduate rather than a data specialist. The pitch is that the coding is done and the researcher now needs to let people see it, and that the established packages are expensive and hard to share.</p>
+  <h4>Three audiences on record</h4><p>Doctoral and early career researchers preparing a thesis, a paper or a viva. Supervisors and methods lecturers who want a teaching and demonstration tool. Small research consultancies and funded projects presenting to clients or funders.</p>
+  <h4>The benchmark buyers already know</h4><p>The marketing plan positions against NVivo at roughly 130 United States dollars a year for students to over 1,100 commercially. The measurement thresholds set for the conference were 30 waitlist signups and 1 in 5 converting to purchase, on a near zero cash budget.</p><div class="figs"><span class="fig">3 audiences</span><span class="fig">Target 30 waitlist signups</span><span class="fig">Target 1 in 5 conversion</span></div></div></div>
+<div class="tabpanel" id="themescape-pricing" role="tabpanel" hidden><div class="prose"><p>Three tiers are live on the marketing page, framed internally as hypotheses to test rather than fixed prices. Self serve leads publicly; done with you is the in person sale; bespoke is priced as a small consulting engagement covering custom visualisations, schema extensions, team or institutional deployment and branding.</p>
+  <p>The sign up page presently states the annual figure in United States dollars, 238 a year after a 7 day trial, alongside the New Zealand dollar pricing on the marketing page.</p><p class="src">Source: charlotteprice.co.nz/themescape and themescape.charlotteprice.co.nz/sign-up, read 5 September 2026.</p></div><div><div class="tiles"><div class="tile"><div class="label">Self serve</div><div class="n">NZ$419 a year</div><p>or NZ$39 a month. Template, hosted viewer and editor, all views, search, Present mode, exports, updates while subscribed. 7 day free trial.</p></div><div class="tile"><div class="label">Done with you</div><div class="n">NZ$849 one off</div><p>First 12 months of access, guided sessions, framework set up with the researcher rather than for them.</p></div><div class="tile"><div class="label">Bespoke</div><div class="n">From NZ$2,590</div><p>Quoted per project. Custom visualisations, schema extensions, team or institutional deployment, branding, priority support.</p></div></div><p class="src">Annual self serve is about NZ$35 a month, roughly 10 per cent less than monthly, in the page's own words.</p></div></div>
+<div class="tabpanel" id="themescape-scale" role="tabpanel" hidden><div class="prose"><p>Self serve leads publicly and done with you is the in person sale, so the plan is to let the demo and the marketing page carry the self serve tier while supervision and conference settings carry the guided tier.</p>
+  <h4>Route to scale</h4><p>Supervisors and methods lecturers are the route into departments, where one adoption produces many self serve users. Bespoke work for research consultancies and funded projects, covering custom visualisations, schema extensions and institutional deployment, is priced as a small consulting engagement. A customer portal replaces the current email based cancellation as the subscriber base grows.</p>
+  <h4>Where it fits the 3 year direction</h4><p>A low touch subscription that runs on Charlotte's method rather than her hours. It is the product that can grow without adding to the 20 hour week.</p></div><div><div class="figure"><h4>Themescape against the tool researchers already pay for</h4><p class="sub">Annual list prices as recorded in the marketing plan, different currencies, not on one scale</p><div id="ch-tsbench"></div><details class="tbl"><summary>Figures as a table</summary><table><tr><th>Product</th><th>Annual price</th></tr><tr><td>Themescape self serve</td><td>NZ$419</td></tr><tr><td>NVivo, student</td><td>about US$130</td></tr><tr><td>NVivo, commercial</td><td>over US$1,100</td></tr></table></details></div></div></div>
+</section>
+<section class="panel" id="panel-neurotap" hidden><div class="panel-head"><div><div class="label">Delivered in session</div><h2>NeuroTap</h2></div><div class="src" style="margin:0">Origin: Launched September 2025, now moving under the company</div></div>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" type="button" aria-selected="true" aria-controls="neurotap-overview" id="tab-neurotap-overview">Overview</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="neurotap-does" id="tab-neurotap-does">What it does</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="neurotap-app" id="tab-neurotap-app">Self install app</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="neurotap-who" id="tab-neurotap-who">Who it is for</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="neurotap-pricing" id="tab-neurotap-pricing">Pricing</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="neurotap-scale" id="tab-neurotap-scale">Upscaling</button>
+</div>
+<div class="tabpanel" id="neurotap-overview" role="tabpanel"><div class="prose"><h4>What it is</h4><p>A psychology informed system of tap to run automations. Small NFC dots placed at a desk, home, car or workplace are each programmed so that tapping a phone against one launches a personalised routine, such as sending a routine message, adding a calendar event or switching the phone into focus mode. The routines are built from an executive function assessment rather than chosen from a list.</p>
+  <h4>Purpose in the company</h4><p><strong>It makes executive function support physical</strong>, carrying the work of a session into the places where routines actually break down.</p>
+  <h4>Where it stands</h4><p>Launched on 29 September 2025 with photography, intake forms and a product page on a separate store. The main site's NeuroTap page is presently empty and its call to action still leads to that store, so bringing the product page onto the main site is the first piece of work. Stock is held. The self install application has not been started.</p><div class="figs"><span class="fig">Launched Sep 2025</span><span class="fig">2 intake forms</span><span class="fig">Stock held</span><span class="gap">Self install app not started</span></div><div class="links"><a class="btn primary" href="https://www.charlotteprice.co.nz/neurotap" target="_blank" rel="noopener">See the NeuroTap page</a></div></div><div><div class="figure"><h4>Stock on hand</h4><p class="sub">Units by product, counted 8 June 2026</p><div id="ch-stock"></div><details class="tbl"><summary>Figures as a table</summary><table><tr><th>Product</th><th>Units</th></tr><tr><td>Black stick dots</td><td>94</td></tr><tr><td>Black non stick dots</td><td>52</td></tr><tr><td>White non stick dots</td><td>50</td></tr><tr><td>White stick dots</td><td>39</td></tr><tr><td>Invisible dots</td><td>30</td></tr><tr><td>Grey tags</td><td>24</td></tr><tr><td>Cream tags</td><td>21</td></tr><tr><td>Black tags</td><td>10</td></tr></table></details></div></div></div>
+<div class="tabpanel" id="neurotap-does" role="tabpanel" hidden><div class="prose"><h4>Four stages</h4><p>Intake through a form, a short executive function assessment, installation by a consultant at which dots are placed and programmed against the pinch points the assessment found, and a follow up that may be remote. Business installations run on site over 1 or 2 days. The customer needs only a current phone, with Apple devices the primary platform.</p>
+  <h4>Two delivery modes, one stream</h4><p>In session delivery exists now. The self install route, with a kit posted to the customer and an application guiding setup, is the intended second mode rather than a separate product, and is described under its own tab.</p>
+  <h4>Scope</h4><p>The public description places it within a clearly defined psychological scope, combining applied psychological science with tap to run digital automations to reduce cognitive load and support action at the point it is needed, across routines, transitions, task initiation and emotional regulation.</p><p class="src">Source: NeuroTap launch material, September 2025; Notion, Brand.</p></div><div><div class="figure"><h4>How a customer gets set up</h4><div class="steps"><div class="step done"><i>&#10003;</i><div><b>Intake</b><span>Individual or business form</span></div></div><div class="step done"><i>&#10003;</i><div><b>Assessment</b><span>Short executive function assessment identifies the pinch points</span></div></div><div class="step done"><i>&#10003;</i><div><b>Installation</b><span>Consultant visit, 90 minutes to 3 hours, 5 to 10 dots placed and programmed</span></div></div><div class="step done"><i>&#10003;</i><div><b>Follow up</b><span>Call or session within 30 days, remote where suitable</span></div></div></div></div></div></div>
+<div class="tabpanel" id="neurotap-app" role="tabpanel" hidden><div class="prose"><h4>The aspiration</h4><p>NeuroTap becomes something a customer can set up themselves. A kit of dots and tags is posted out, and an application takes the customer through the same executive function assessment a consultant would run, identifies the pinch points, and guides them through placing and programming each dot against a routine that fits their day. The psychology stays in the product; the consultant visit becomes optional rather than the only way in.</p>
+  <h4>Why it matters to the stream</h4><p>In session delivery is capped by the hours Charlotte can spend on site, at 1 to 2 installations a week at most. A self install route removes that ceiling, lets the product reach customers outside Christchurch without travel, and turns a 90 minute to 3 hour visit into a kit sale with remote support. It also opens a business offer where a workplace buys kits for staff and runs setup from the app rather than booking days on site.</p>
+  <h4>What is decided</h4><p>Apple devices are the primary platform, since the automations run through the phone. Self setup functions are part of the product definition recorded on 5 September 2026. The in session service continues alongside the app rather than being replaced by it.</p>
+  <h4>What is not yet decided</h4><p>The build has not started, and no platform, developer, specification, cost, timeline or price has been set. Those are the next decisions for the stream once the product page has moved onto the main site.</p><div class="figs"><span class="fig">Kits posted out</span><span class="fig">Assessment carried in the app</span><span class="fig">Apple first</span><span class="gap">Build not started</span></div></div><div><div class="figure"><h4>The intended self install journey</h4><p class="sub">How a customer would get from order to running routines without a visit</p><div class="steps"><div class="step pending"><i></i><div><b>Order a kit</b><span>Dots and tags chosen by package, posted to the customer</span></div></div><div class="step pending"><i></i><div><b>Assess in the app</b><span>The executive function assessment identifies where routines break down</span></div></div><div class="step pending"><i></i><div><b>Place and programme</b><span>The app guides each dot to a location and a routine, tap to confirm</span></div></div><div class="step pending"><i></i><div><b>Routines run</b><span>Tapping a dot launches the automation on the phone</span></div></div><div class="step pending"><i></i><div><b>Remote follow up</b><span>Reprogramming and support without a site visit</span></div></div></div><p class="src">Aspiration as stated in September 2026; no build exists yet.</p></div></div></div>
+<div class="tabpanel single" id="neurotap-who" role="tabpanel" hidden><div class="prose"><p>Individuals facing daily overwhelm, and businesses seeking staff wellbeing and productivity gains. Packages can be invoiced to individuals or organisations, and business pricing is quoted after intake according to staff numbers or a workshop format.</p>
+  <p>It is used across individual and organisational contexts for routines, transitions, task initiation and emotional regulation, which places its natural buyers among the same people the consulting practice already serves: neurodivergent professionals and students, and employers thinking about wellbeing in practical terms.</p><div class="figs"><span class="fig">Individuals and organisations</span><span class="fig">Business pricing quoted after intake</span></div></div></div>
+<div class="tabpanel" id="neurotap-pricing" role="tabpanel" hidden><div class="prose"><p>Three packages were set at launch in September 2025, each inclusive of GST and the hardware. Additional tags are 25 dollars installed, extra consultant time is 95 dollars an hour, and travel may apply outside Christchurch City. These prices predate the company and are to be revised once it is trading, so none should be treated as fixed.</p>
+  <h4>Rates in use</h4><p>The invoicing services list carries three NeuroTap items, excluding GST: a set up at 250 dollars, functional work at 190 dollars an hour, and a marketing bundle of 50 tags at 600 dollars. These are the rates being billed, and sit alongside rather than replace the launch packages.</p><div class="figs"><span class="fig">Set up 250 dollars</span><span class="fig">Functional 190 dollars an hour</span><span class="fig">50 tag bundle 600 dollars</span><span class="verify">Under review</span></div><p class="src">Source: NeuroTap Pricing Structure, 16 September 2025; invoicing services list, 5 September 2026.</p></div><div><div class="figure"><h4>Package ladder</h4><p class="sub">Price in New Zealand dollars including GST, September 2025</p><div id="ch-ntpack"></div><details class="tbl"><summary>Figures as a table</summary><table><tr><th>Package</th><th>Price</th><th>Dots</th><th>Visit</th><th>Follow up</th></tr><tr><td>Starter</td><td>295</td><td>up to 5</td><td>90 minutes</td><td>none</td></tr><tr><td>Professional</td><td>495</td><td>up to 8</td><td>2 hours</td><td>1 call within 30 days</td></tr><tr><td>Premium</td><td>695</td><td>up to 10</td><td>3 hours</td><td>2 sessions, priority reprogramming</td></tr></table></details></div></div></div>
+<div class="tabpanel single" id="neurotap-scale" role="tabpanel" hidden><div class="prose"><p>The route to scale is away from consultant installation, which caps the stream at what Charlotte can do in person, and towards self installation with kits mailed out and an application guiding setup. If required she would take 1 to 2 installations a week in the meantime.</p>
+  <h4>Immediate</h4><p>Move the product page onto the main site, replacing the store link, the email address and the printed collateral, and remove the registered mark symbol until a registration exists.</p>
+  <h4>Then</h4><p>Define and build the self install application, revise the package prices for the company, and set reorder thresholds on the stock database, which presently has none.</p></div></div>
+</section>
+<section class="panel" id="panel-clientbridge" hidden><div class="panel-head"><div><div class="label">In build</div><h2>ClientBridge</h2></div><div class="src" style="margin:0">Origin: Renamed from the Coaching with Charlotte app built for this practice</div></div>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" type="button" aria-selected="true" aria-controls="clientbridge-overview" id="tab-clientbridge-overview">Overview</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="clientbridge-does" id="tab-clientbridge-does">What it does</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="clientbridge-who" id="tab-clientbridge-who">Who it is for</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="clientbridge-pricing" id="tab-clientbridge-pricing">Pricing</button>
+<button class="tab" role="tab" type="button" aria-selected="false" aria-controls="clientbridge-scale" id="tab-clientbridge-scale">Upscaling</button>
+</div>
+<div class="tabpanel" id="clientbridge-overview" role="tabpanel"><div class="prose"><h4>What it is</h4><p><em>Structured support, between sessions.</em> A practitioner facing platform that structures and sustains client progress between sessions. Practitioners assign tasks, set reminders and receive client progress reports, creating a continuous feedback loop that makes each session more effective. It is not a self help tool and it is not AI driven. It is a professional workflow platform that amplifies the practitioner's existing methodology, practitioner led and practitioner sold; clients interact with it because their practitioner has recommended it, not because they sought it out.</p>
+  <h4>The problem it closes</h4><p>The period between sessions is largely unstructured for clients and invisible to practitioners. Tasks discussed in session are forgotten, habits do not form, and progress stalls, so practitioners spend the opening of each session re establishing context rather than advancing treatment or coaching goals. ClientBridge makes between session activity visible, structured and accountable.</p>
+  <h4>Purpose in the company</h4><p><strong>It is the stream with room to scale</strong>, sold by the practitioner seat rather than by the consulting hour, into a defined, regulated and reachable professional market.</p>
+  <h4>Where it stands</h4><p>In build, with a marketing launch target at the start of 2027. It evolved out of the Coaching with Charlotte application, a coach directed tool built for this practice, and is now modality agnostic. Development is led by a technical co founder who holds an interest in the product, so a registered entity, a shareholders' agreement and a formal assignment of the software are required before first paid launch.</p><div class="figs"><span class="fig">Launch target start of 2027</span><span class="fig">Modality agnostic</span><span class="fig">No generative AI</span></div><div class="links"><a class="btn primary" href="https://stitch.withgoogle.com/projects/18179347805708210380" target="_blank" rel="noopener">Open the app design in Stitch</a></div><p class="src">The Stitch project holds the ClientBridge app screens. It opens in Google Stitch and may ask for a Google sign in.</p></div><div><div class="figure"><h4>Roadmap</h4><p class="sub">Sequence as recorded in the business plan</p><div id="ch-cbroad"></div></div></div></div>
+<div class="tabpanel" id="clientbridge-does" role="tabpanel" hidden><div class="prose"><h4>Between sessions</h4><p>A task carries text content, the task itself, a deadline, the next session date and reminder dates. The practitioner assigns it in session, the client acts on it in their own environment, and progress returns to the practitioner as usable information, so the next session opens with the practitioner already informed rather than reconstructing the fortnight from memory.</p>
+  <h4>What it deliberately is not</h4><p>Not a patient record system, not a habit tracker, not a self help tool, not telehealth, not an AI product. It sits between clinical practice management software and generic task apps, in a space neither serves well, as a structured accountability layer that belongs to the practitioner and is configured around their method. It contains no generative artificial intelligence, no automated treatment planning and no self directed client discovery, which reduces the compliance surface and keeps the practitioner, not an algorithm, in charge of the work.</p>
+  <h4>What it produces</h4><p>Faster client progress, reduced practitioner frustration, and a more defensible value proposition for the practitioner when discussing fees, outcomes or graduation timelines with clients.</p>
+  <h4>Customisation over content</h4><p>A basic set of starter tasks reduces setup, but the defining feature is that the practitioner tailors tasks to the individual client, keeping the work specific to the person rather than generic to the diagnosis.</p><div class="figs"><span class="gap">Mobile, web or both: undecided</span></div></div><div><div class="figure"><h4>Where it sits against the alternatives</h4><p class="sub">Positioning as recorded in the business plan</p><div class="pos"><span class="ax" style="left:0;bottom:-22px">&#8592; Practice administration</span><span class="ax" style="right:0;bottom:-22px">Between session work &#8594;</span><span class="ax" style="left:6px;top:4px">&#8593; Practitioner led</span><span class="ax" style="left:6px;bottom:4px">&#8595; Content led</span><span style="left:34%;top:72%">Power Diary, Halaxy, Cliniko, Jane</span><span style="left:76%;top:80%">Quenza</span><span style="left:74%;top:54%">CoachAccountable</span><span class="me" style="left:70%;top:22%">ClientBridge</span></div><p class="src">Practice systems hold scheduling, notes and billing and treat between session activity as an adjunct. Intervention tools compete on library size and automation. ClientBridge sits between them as the practitioner led accountability layer.</p></div></div></div>
+<div class="tabpanel" id="clientbridge-who" role="tabpanel" hidden><div class="prose"><p>Psychologists first, in New Zealand and then Australia, then counsellors, workplace and employee assistance providers, coaches and allied health professionals. The practitioner is the buyer and the billable seat, so the market is measured in practitioners rather than end clients.</p>
+  <h4>Why psychologists first</h4><p>They face the between session problem acutely, work within structured methods the platform is designed to carry, and are reachable through identifiable professional bodies. Establishing with this group provides clinical credibility and a reference base. Australia is a materially larger psychology market connected through trans Tasman mutual recognition of registration.</p><div class="figs"><span class="verify">Registration figures to verify against the current Board report</span></div></div><div><div class="figure"><h4>The addressable market in New Zealand</h4><p class="sub">Psychologists, from the New Zealand Psychologists Board annual report cited in the business plan</p><div id="ch-cbmarket"></div><details class="tbl"><summary>Figures as a table</summary><table><tr><th>Group</th><th>Practitioners</th></tr><tr><td>On the register</td><td>4,967</td></tr><tr><td>Holding a current practising certificate, 31 March 2025</td><td>4,081</td></tr><tr><td>Clinical, general and counselling scopes</td><td>about 3,400</td></tr><tr><td>New registrations in the year</td><td>272</td></tr></table></details></div></div></div>
+<div class="tabpanel" id="clientbridge-pricing" role="tabpanel" hidden><div class="prose"><h4>Practitioner subscription</h4><p>A psychologist subscribes at <strong>199 dollars a month</strong>, which covers up to 6 active clients on the platform. The practitioner is the buyer and the billable seat; clients are brought on by their practitioner and are not charged.</p>
+  <h4>Why a flat monthly fee</h4><p>The recorded tension is that a practitioner paid per session has no incentive to adopt a tool that shortens engagements. A subscription priced by practitioner and client capacity, rather than by session, keeps the platform's value independent of how many sessions a client needs, so a faster outcome costs the practitioner nothing.</p>
+  <h4>Still to set</h4><p>Pricing for a practitioner with more than 6 active clients, whether by additional client seats or a higher tier, annual billing, and the position for counsellors, employee assistance providers and coaches when those segments open. GST treatment and Australian pricing follow the entity and data handling decisions.</p><div class="figs"><span class="fig">199 dollars a month</span><span class="fig">Up to 6 clients</span><span class="fig">About 33 dollars per client a month</span><span class="gap">Above 6 clients not set</span></div></div><div><div class="figure"><h4>What practitioner numbers mean</h4><p class="sub">Monthly subscription revenue at 199 dollars per practitioner, illustrative</p><div id="ch-cbrev"></div><details class="tbl"><summary>Figures as a table</summary><table><tr><th>Practitioners</th><th>Monthly</th><th>Annual</th><th>Clients supported</th></tr><tr><td>10</td><td>1,990</td><td>23,880</td><td>up to 60</td></tr><tr><td>25</td><td>4,975</td><td>59,700</td><td>up to 150</td></tr><tr><td>50</td><td>9,950</td><td>119,400</td><td>up to 300</td></tr><tr><td>100</td><td>19,900</td><td>238,800</td><td>up to 600</td></tr></table></details></div></div></div>
+<div class="tabpanel single" id="clientbridge-scale" role="tabpanel" hidden><div class="prose"><p>Build to beta, first release to New Zealand psychologists, then Australian psychologists, then adjacent disciplines. Growth is by practitioner seat at 199 dollars a month, each seat carrying up to 6 clients, so the sales effort is measured in dozens of practitioners rather than thousands of users. One hundred New Zealand psychologists, under 3 per cent of those holding a practising certificate, would be about 19,900 dollars a month.</p>
+  <h4>Before first paid launch</h4><p>Company registration for the product, a shareholders' agreement reflecting the agreed split, formal assignment of the intellectual property to that company, a data handling position compliant with New Zealand privacy law and with Australian law before expansion, and the domain and trade mark checks on the name.</p>
+  <h4>Where it fits the 3 year direction</h4><p>It is the product that could carry the company, and the one that advances on the co founder's time rather than Charlotte's. Its structure has to be settled first, because it is the one stream that cannot simply be a division of a company with a single shareholder.</p></div></div>
+</section>
+<section><h2>The company as a whole</h2><p class="lede">What the 4 streams add up to, what the next 6 months hold, and what is still being settled.</p>
+<div class="company">
+<div class="figure"><h4>The next 6 months</h4><div class="tl">
+<div class="past"><b>3 Sep 2026</b><span>Company name reserved, application at payment stage</span></div>
+<div><b>1 Oct 2026</b><span>Director and shareholder consents expire at 5pm</span></div>
+<div><b>3 Oct 2026</b><span>Work Smarter with Claude workshop, 20 places</span></div>
+<div><b>1 Nov 2026</b><span>Working assumption for invoicing in the company's name</span></div>
+<div><b>Early 2027</b><span>ClientBridge marketing launch target</span></div>
+</div></div>
+<div class="open">
+<p><span>How the four fit together</span>The consulting practice is the engine and the other 3 are what it has learned, made repeatable. Each began as a solution built for a real client, so they share one logic: work that depends on someone acting between appointments, and structure that holds when the practitioner is not in the room. Presented as one firm with products, a client of one stream is a credible buyer of another.</p>
+<p><span>Being settled</span>Ownership and entity structure for ClientBridge, ahead of first paid launch, and whether that changes the constitution decision at incorporation.</p>
+<p><span>Being settled</span>Confirmation of the June 2026 rate card for company invoicing, which sets the first year revenue target.</p>
+<p><span>Being settled</span>Accounting, insurance, company terms and a privacy statement, none of which the website carries today, together with the footer, invoices and terms of engagement moving to the company's name.</p>
+</div></div></section>
+<footer><span>Charlotte Price Consulting Limited</span><span>Internal brief, September 2026. Sources: project records, charlotteprice.co.nz, themescape.charlotteprice.co.nz, Notion hub.</span></footer></div><div class="tip" id="tip"></div>
+
+<script>
+(function(){
+  var css = getComputedStyle(document.documentElement);
+  function tok(n){ return css.getPropertyValue(n).trim(); }
+  var tip = document.getElementById('tip');
+  function showTip(e, html){ tip.innerHTML = html; tip.classList.add('on'); moveTip(e); }
+  function moveTip(e){ tip.style.left = (e.clientX + 14) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; }
+  function hideTip(){ tip.classList.remove('on'); }
+  function attachTip(el, html){ el.addEventListener('mouseenter', function(e){ showTip(e, html); }); el.addEventListener('mousemove', moveTip); el.addEventListener('mouseleave', hideTip); }
+  function svgEl(n, a){ var e = document.createElementNS('http://www.w3.org/2000/svg', n); for (var k in a) e.setAttribute(k, a[k]); return e; }
+  function fmt(n){ return n.toLocaleString('en-NZ'); }
+
+  // horizontal bars, single series
+  function hbar(id, rows, opts){
+    var host = document.getElementById(id); if(!host) return;
+    opts = opts || {};
+    var W = 520, labW = opts.labW || 170, rowH = 30, barH = 18, padT = 6, padB = 10;
+    var H = padT + rows.length*rowH + padB;
+    var max = opts.max || Math.max.apply(null, rows.map(function(r){return r.value;}));
+    var plotW = W - labW - 70;
+    var s = svgEl('svg', {viewBox:'0 0 '+W+' '+H, role:'img', 'aria-label': opts.aria || ''});
+    var color = opts.color || 'var(--c1)';
+    rows.forEach(function(r, i){
+      var y = padT + i*rowH;
+      var t = svgEl('text', {x: labW - 10, y: y + barH*0.72, 'text-anchor':'end'}); t.textContent = r.label; s.appendChild(t);
+      var w = Math.max(4, r.value/max*plotW);
+      var g = svgEl('g', {});
+      var rect = svgEl('rect', {x: labW, y: y, width: w, height: barH, fill: r.color || color, rx: 0});
+      var cap = svgEl('rect', {x: labW + w - 8, y: y, width: 8, height: barH, fill: r.color || color, rx: 4});
+      g.appendChild(rect); g.appendChild(cap);
+      var hit = svgEl('rect', {x: labW, y: y-4, width: plotW+60, height: barH+8, fill:'transparent'});
+      g.appendChild(hit); s.appendChild(g);
+      var v = svgEl('text', {x: labW + w + 8, y: y + barH*0.72, 'class':'v'}); v.textContent = (opts.prefix||'') + fmt(r.value) + (opts.suffix||''); s.appendChild(v);
+      attachTip(g, '<b>'+r.label+'</b><br>'+(opts.prefix||'')+fmt(r.value)+(opts.suffix||'')+(r.note? '<br>'+r.note:''));
+    });
+    s.appendChild(svgEl('line', {x1: labW, x2: labW, y1: padT-2, y2: H-padB+2, 'class':'base'}));
+    host.appendChild(s);
+  }
+
+  // stacked single bar
+  function stack(id, segs, total, unit){
+    var host = document.getElementById(id); if(!host) return;
+    var W = 520, H = 74, barH = 22, y = 22, x = 0, plotW = W;
+    var s = svgEl('svg', {viewBox:'0 0 '+W+' '+H, role:'img', 'aria-label':'Weekly capacity split'});
+    var acc = 0;
+    segs.forEach(function(sg, i){
+      var w = sg.value/total*plotW - (i < segs.length-1 ? 2 : 0);
+      var r = svgEl('rect', {x: acc, y: y, width: w, height: barH, fill: sg.color});
+      s.appendChild(r);
+      var lbl = svgEl('text', {x: acc + 6, y: y + barH + 18}); lbl.textContent = sg.label; s.appendChild(lbl);
+      var v = svgEl('text', {x: acc + 6, y: y - 7, 'class':'v'}); v.textContent = sg.value + ' ' + unit; s.appendChild(v);
+      attachTip(r, '<b>'+sg.label+'</b><br>'+sg.value+' '+unit+' of '+total);
+      acc += w + 2;
+    });
+    host.appendChild(s);
+  }
+
+  function steps(id, items){
+    var host = document.getElementById(id); if(!host) return;
+    var d = document.createElement('div'); d.className = 'steps';
+    items.forEach(function(it){
+      var st = document.createElement('div'); st.className = 'step ' + it.state;
+      var mark = it.state === 'done' ? '&#10003;' : (it.state === 'next' ? '&#8594;' : '');
+      st.innerHTML = '<i>'+mark+'</i><div><b>'+it.label+'</b><span>'+it.note+'</span><div class="state">'+(it.state==='done'?'Done':(it.state==='next'?'Next':'Pending'))+'</div></div>';
+      d.appendChild(st);
+    });
+    host.appendChild(d);
+  }
+
+  // ---- data ----
+  stack('ch-capacity', [
+    {label:'Coaching, 11 clients at 1 hour', value: 11, color: 'var(--c1)'},
+    {label:'Projects, products, admin, marketing', value: 9, color: 'var(--cneutral)'}
+  ], 20, 'hours');
+
+  hbar('ch-sessions', [
+    {label:'Practical skills session', value:190},
+    {label:'Coaching', value:170},
+    {label:'Vocational support', value:135},
+    {label:'Vocational support, student', value:50}
+  ], {max:200, prefix:'$', labW:190, aria:'Session rates in use'});
+
+  hbar('ch-rates', [
+    {label:'Workflow, automation and AI', value:225, note:'Packages 645 to 3,900 dollars'},
+    {label:'Organisational psychology', value:195, note:'Packages 555 to 3,300 dollars'},
+    {label:'HR consulting', value:185, note:'Packages 525 to 3,100 dollars'}
+  ], {max:250, prefix:'$', suffix:' an hour', labW:190, aria:'Hourly rates by consulting line'});
+
+
+  hbar('ch-tsbench', [
+    {label:'Themescape self serve', value:419, color:'var(--c2)', note:'New Zealand dollars a year'},
+    {label:'NVivo, student', value:130, note:'About this figure, United States dollars a year'},
+    {label:'NVivo, commercial', value:1100, note:'Over this figure, United States dollars a year'}
+  ], {max:1200, prefix:'', suffix:'', labW:170, aria:'Annual list prices, different currencies'});
+
+  hbar('ch-stock', [
+    {label:'Black stick dots', value:94},{label:'Black non stick dots', value:52},{label:'White non stick dots', value:50},
+    {label:'White stick dots', value:39},{label:'Invisible dots', value:30},{label:'Grey tags', value:24},{label:'Cream tags', value:21},{label:'Black tags', value:10}
+  ], {max:100, suffix:' units', labW:160, color:'var(--c3)', aria:'NeuroTap stock by product'});
+
+  hbar('ch-ntpack', [
+    {label:'Starter', value:295, note:'Up to 5 dots, 90 minute visit'},
+    {label:'Professional', value:495, note:'Up to 8 dots, 2 hour visit, 1 follow up call'},
+    {label:'Premium', value:695, note:'Up to 10 dots, 3 hour visit, 2 follow up sessions'}
+  ], {max:750, prefix:'$', labW:120, color:'var(--c3)', aria:'NeuroTap package prices'});
+
+  steps('ch-cbroad', [
+    {label:'Build to beta', note:'Platform format and pricing to be decided first', state:'next'},
+    {label:'Structure', note:'Entity, shareholders agreement, assignment of the software, data handling position', state:'pending'},
+    {label:'First release to New Zealand psychologists', note:'Marketing launch target start of 2027', state:'pending'},
+    {label:'Australian psychologists', note:'Trans Tasman mutual recognition, Australian privacy position first', state:'pending'},
+    {label:'Adjacent disciplines', note:'Counsellors, employee assistance providers, coaches, allied health', state:'pending'}
+  ]);
+
+  hbar('ch-cbrev', [
+    {label:'10 practitioners', value:1990, note:'Up to 60 clients'},
+    {label:'25 practitioners', value:4975, note:'Up to 150 clients'},
+    {label:'50 practitioners', value:9950, note:'Up to 300 clients'},
+    {label:'100 practitioners', value:19900, note:'Up to 600 clients'}
+  ], {max:21000, prefix:'$', suffix:' a month', labW:150, color:'var(--c2)', aria:'Monthly revenue by practitioner count'});
+
+  hbar('ch-cbmarket', [
+    {label:'On the register', value:4967},
+    {label:'Current practising certificate', value:4081, note:'At 31 March 2025'},
+    {label:'Clinical, general, counselling', value:3400, note:'Approximately; the target segment'}
+  ], {max:5200, labW:200, color:'var(--c2)', aria:'New Zealand psychologists by group'});
+
+  // ---- tree interaction ----
+  var children = document.querySelectorAll('.child');
+  function select(key){
+    children.forEach(function(c){ c.setAttribute('aria-pressed', String(c.dataset.stream === key)); });
+    document.querySelectorAll('.panel').forEach(function(p){ p.hidden = (p.id !== 'panel-' + key); });
+  }
+  children.forEach(function(c){ c.addEventListener('click', function(){
+    select(c.dataset.stream);
+    var p = document.getElementById('panel-' + c.dataset.stream);
+    if (p && window.matchMedia('(max-width: 860px)').matches) p.scrollIntoView({behavior:'smooth', block:'start'});
+  }); });
+  select('consulting');
+
+  // ---- tabs ----
+  document.querySelectorAll('.tabs').forEach(function(list){
+    var tabs = list.querySelectorAll('.tab');
+    tabs.forEach(function(t){
+      t.addEventListener('click', function(){
+        tabs.forEach(function(o){ o.setAttribute('aria-selected','false'); document.getElementById(o.getAttribute('aria-controls')).hidden = true; });
+        t.setAttribute('aria-selected','true'); document.getElementById(t.getAttribute('aria-controls')).hidden = false;
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
